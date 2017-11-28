@@ -48,7 +48,7 @@
         "generation": 1,
         "creationTimestamp": null,
         "labels": {
-            "template": "hub-build"
+            "template": "news-api-client-build"
         }
     },
     "spec": {
@@ -158,7 +158,7 @@
         "source": {
             "type": "Git",
             "git": {
-                "uri": "https://github.com/GeorgeWalker/dev-gcpe-news-api-client.git"
+                "uri": "https://github.com/bcgov/gcpe-news-api-client.git"
             }
         },
         "strategy": {
@@ -272,7 +272,7 @@
         "source": {
             "type": "Git",
             "git": {
-                "uri": "https://github.com/GeorgeWalker/dev-gcpe-news-api-client.git"
+                "uri": "https://github.com/bcgov/gcpe-news-api-client.git"
             }
         },
         "strategy": {
@@ -320,7 +320,7 @@
       "displayName": "Source Repository",
       "description": "The source repository to use for the builds.",
       "required": true,
-      "value": "https://github.com/bcgov/agri-nmp.git"
+      "value": "https://github.com/bcgov/gcpe-news-api-client.git"
     },	
     {
       "name": "GIT_REFERENCE",
