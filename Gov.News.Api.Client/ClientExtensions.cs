@@ -9,7 +9,7 @@ namespace Gov.News.Api
   
 
     /// <summary>
-    /// Extension methods for Client.
+    /// Additional Extension methods for Client.
     /// </summary>
     public static partial class ClientExtensions
     {
