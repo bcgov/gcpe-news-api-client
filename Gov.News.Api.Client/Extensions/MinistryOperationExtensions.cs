@@ -6,14 +6,13 @@ namespace Gov.News.Api
 {
     using Gov.News.Api.Models;
     using System.Threading.Tasks;
-  
+
 
     /// <summary>
-    /// Additional Extension methods for Client.
+    /// Additional Extension methods for MinistryOperations.
     /// </summary>
-    public static partial class ClientExtensions
+    public static partial class MinistryOperationsExtensions
     {
-        const string currentAPIVersion = "1.0";
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -30,7 +29,7 @@ namespace Gov.News.Api
             /// </param>
             public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<Ministry>> MinistriesGetAsync(this IClient operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
             {
-                using (var _result = await operations.ApiMinistriesGetWithHttpMessagesAsync(currentAPIVersion, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.Ministry.GetAllWithHttpMessagesAsync(ClientExtensions.currentAPIVersion, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -43,7 +42,7 @@ namespace Gov.News.Api
             /// </param>
             public static Ministry MinistriesByKeyGet(this IClient operations, string key)
             {
-                return System.Threading.Tasks.Task.Factory.StartNew(s => ((IClient)s).MinistriesByKeyGetAsync(key), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return System.Threading.Tasks.Task.Factory.StartNew(s => ((IClient)s).Ministry.GetByIdAsync(key, currentAPIVersion), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <param name='operations'>
@@ -56,7 +55,7 @@ namespace Gov.News.Api
             /// </param>
             public static async System.Threading.Tasks.Task<Ministry> MinistriesByKeyGetAsync(this IClient operations, string key, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
             {
-                using (var _result = await operations.ApiMinistriesByKeyGetWithHttpMessagesAsync(currentAPIVersion,key, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.Ministry.GetByIdWithHttpMessagesAsync(key, currentAPIVersion, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
