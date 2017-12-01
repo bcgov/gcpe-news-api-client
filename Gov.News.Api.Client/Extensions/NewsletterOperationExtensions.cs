@@ -33,6 +33,7 @@ namespace Gov.News.Api
             }
         }
 
+        /*
 
         public static Newsletter GetNewsletterByKey(this INewsletterOperations operations, string key)
         {
@@ -55,5 +56,6 @@ namespace Gov.News.Api
             }
         }
 
+    */
     }
 }

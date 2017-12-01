@@ -33,7 +33,7 @@ namespace Gov.News.Api
             }
         }
 
-
+        /*
 
         public static FlickrAsset GetFlickrAssetByKey(this IFlickrAssetOperations operations, string key)
         {
@@ -55,5 +55,7 @@ namespace Gov.News.Api
                 return _result.Body;
             }
         }
+
+    */
     }
 }

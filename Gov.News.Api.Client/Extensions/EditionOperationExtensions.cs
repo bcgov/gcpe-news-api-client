@@ -34,6 +34,7 @@ namespace Gov.News.Api
             }
         }
 
+        /*
 
         public static Edition GetEditionByKey(this IEditionOperations operations, string key)
         {
@@ -56,5 +57,6 @@ namespace Gov.News.Api
             }
         }
 
+    */
     }
 }

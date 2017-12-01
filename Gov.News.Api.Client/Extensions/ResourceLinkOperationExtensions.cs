@@ -33,7 +33,7 @@ namespace Gov.News.Api
             }
         }
 
-
+        /*
         public static ResourceLink GetResourceLinkByKey(this IResourceLinkOperations operations, string key)
         {
             return System.Threading.Tasks.Task.Factory.StartNew(s => ((IResourceLinkOperations)s).GetResourceLinkByKeyAsync(key), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
@@ -54,5 +54,6 @@ namespace Gov.News.Api
                 return _result.Body;
             }
         }
+        */
     }
 }
