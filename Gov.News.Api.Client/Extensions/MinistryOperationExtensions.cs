@@ -40,9 +40,9 @@ namespace Gov.News.Api
             /// </param>
             /// <param name='key'>
             /// </param>
-            public static Ministry GetMinistriesByKey(this IMinistryOperations operations, string key)
+            public static Ministry GetMinistryByKey(this IMinistryOperations operations, string key)
             {
-                return System.Threading.Tasks.Task.Factory.StartNew(s => ((IMinistryOperations)s).GetMinistriesByKeyAsync(key), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return System.Threading.Tasks.Task.Factory.StartNew(s => ((IMinistryOperations)s).GetMinistryByKeyAsync(key), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <param name='operations'>
@@ -53,7 +53,7 @@ namespace Gov.News.Api
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async System.Threading.Tasks.Task<Ministry> GetMinistriesByKeyAsync(this IMinistryOperations operations, string key, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+            public static async System.Threading.Tasks.Task<Ministry> GetMinistryByKeyAsync(this IMinistryOperations operations, string key, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
             {
                 using (var _result = await operations.GetOneWithHttpMessagesAsync(key, ClientExtensions.currentAPIVersion, null, cancellationToken).ConfigureAwait(false))
                 {

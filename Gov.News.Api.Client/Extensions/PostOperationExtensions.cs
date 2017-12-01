@@ -81,22 +81,6 @@ namespace Gov.News.Api
             }
         }
 
-        /* can't do FeaturePost yet as DataIndex is not in the model
-        
-        public static Post GetFeaturePost(this IPostOperations operations, DataIndex)
-        {
-            return System.Threading.Tasks.Task.Factory.StartNew(s => ((IPostOperations)s).GetFeaturePostAsync(), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-        }
-
-        public static async System.Threading.Tasks.Task<Post> GetFeaturePostAsync(this IPostOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetTopWithHttpMessagesAsync(ClientExtensions.currentAPIVersion, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-
-        */
 
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -138,6 +122,29 @@ namespace Gov.News.Api
         public static async System.Threading.Tasks.Task<IEnumerable<Post>> GetFeaturePostsAsync(this IPostOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetFeatureWithHttpMessagesAsync(ClientExtensions.currentAPIVersion, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+
+
+
+        public static Post GetPostByKey(this IPostOperations operations, string key)
+        {
+            return System.Threading.Tasks.Task.Factory.StartNew(s => ((IPostOperations)s).GetPostByKeyAsync(key), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+        }
+
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='key'>
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Post> GetPostByKeyAsync(this IPostOperations operations, string key, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetOneWithHttpMessagesAsync(key, ClientExtensions.currentAPIVersion, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
