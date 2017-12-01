@@ -9,14 +9,14 @@ namespace Gov.News.Api
     /// <summary>
     /// Additional Extension methods for ResourceLinkOperationExtensions.
     /// </summary>
-    public static partial class ResourceLinkOperationExtensions
+    public static partial class ThemeOperationExtensions
     {
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static System.Collections.Generic.IList<ResourceLink> GetResourceLinks(this IResourceLinkOperations operations)
+        public static System.Collections.Generic.IList<Category> GetTags(this ITag operations)
         {
-            return System.Threading.Tasks.Task.Factory.StartNew(s => ((IResourceLinkOperations)s).GetResourceLinksAsync(), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            return System.Threading.Tasks.Task.Factory.StartNew(s => ((ITag)s).GetTagsAsync(), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
 
         /// <param name='operations'>
@@ -25,7 +25,7 @@ namespace Gov.News.Api
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<ResourceLink>> GetResourceLinksAsync(this IResourceLinkOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<Category>> GetTagsAsync(this ITag operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetAllWithHttpMessagesAsync(ClientExtensions.currentAPIVersion, null, cancellationToken).ConfigureAwait(false))
             {
