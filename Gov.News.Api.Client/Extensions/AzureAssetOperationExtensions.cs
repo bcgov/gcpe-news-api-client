@@ -27,7 +27,7 @@ namespace Gov.News.Api
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static AzureAsset GetFromPost(this IAzureAssetOperations operations, Post post)
+        public static System.Collections.Generic.IList<AzureAsset> GetFromPost(this IAzureAssetOperations operations, Post post)
         {
             return System.Threading.Tasks.Task.Factory.StartNew(s => ((IAzureAssetOperations)s).GetFromPostAsync(post), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
@@ -43,12 +43,29 @@ namespace Gov.News.Api
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async Task<AzureAsset> GetFromPostAsync(this IAzureAssetOperations operations, Post post, CancellationToken cancellationToken = default(CancellationToken))
+        public static async Task<System.Collections.Generic.IList<AzureAsset>> GetFromPostAsync(this IAzureAssetOperations operations, Post post, CancellationToken cancellationToken = default(CancellationToken))
         {
             using (var _result = await operations.GetFromPostWithHttpMessagesAsync(ClientExtensions.currentAPIVersion, post, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
+        /*
+
+        public static AzureAsset GetAzureAssetByKey(this IAzureAssetOperations operations, string key)
+        {
+            return System.Threading.Tasks.Task.Factory.StartNew(s => ((IAzureAssetOperations)s).GetAzureAssetByKeyAsync(key), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+        }
+
+
+        public static async System.Threading.Tasks.Task<AzureAsset> GetAzureAssetByKeyAsync(this IAzureAssetOperations operations, string key, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetOneWithHttpMessagesAsync(key, ClientExtensions.currentAPIVersion, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+
+    */
     }
 }

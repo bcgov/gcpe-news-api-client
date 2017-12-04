@@ -33,5 +33,21 @@ namespace Gov.News.Api
             }
         }
 
+        /*
+        public static FacebookPost GetFacebookPostByKey(this IFacebookPostOperations operations, string key)
+        {
+            return System.Threading.Tasks.Task.Factory.StartNew(s => ((IFacebookPostOperations)s).GetFacebookPostByKeyAsync(key), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+        }
+
+        /// </param>
+        public static async System.Threading.Tasks.Task<FacebookPost> GetFacebookPostByKeyAsync(this IFacebookPostOperations operations, string key, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetOneWithHttpMessagesAsync(key, ClientExtensions.currentAPIVersion, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+
+    */
     }
 }

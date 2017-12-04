@@ -14,7 +14,7 @@ namespace Gov.News.Api
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static FlickrAsset GetFlickrAssets(this IFlickrAssetOperations operations, Post post)
+        public static System.Collections.Generic.IList<FlickrAsset> GetFlickrAssets(this IFlickrAssetOperations operations, Post post)
         {
             return System.Threading.Tasks.Task.Factory.StartNew(s => ((IFlickrAssetOperations)s).GetFlickrAssetsAsync(post), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
@@ -25,7 +25,7 @@ namespace Gov.News.Api
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<FlickrAsset> GetFlickrAssetsAsync(this IFlickrAssetOperations operations, Post post, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<FlickrAsset>> GetFlickrAssetsAsync(this IFlickrAssetOperations operations, Post post, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetFromPostWithHttpMessagesAsync(ClientExtensions.currentAPIVersion, post, null, cancellationToken).ConfigureAwait(false))
             {
@@ -33,5 +33,29 @@ namespace Gov.News.Api
             }
         }
 
+        /*
+
+        public static FlickrAsset GetFlickrAssetByKey(this IFlickrAssetOperations operations, string key)
+        {
+            return System.Threading.Tasks.Task.Factory.StartNew(s => ((IFlickrAssetOperations)s).GetFlickrAssetByKeyAsync(key), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+        }
+
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='key'>
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<FlickrAsset> GetFlickrAssetByKeyAsync(this IFlickrAssetOperations operations, string key, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetOneWithHttpMessagesAsync(key, ClientExtensions.currentAPIVersion, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+
+    */
     }
 }
