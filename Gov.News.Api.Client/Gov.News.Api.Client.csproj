@@ -13,9 +13,6 @@
     <PackageIconUrl>https://news.gov.bc.ca/favicon.ico</PackageIconUrl>
   </PropertyGroup>
 
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(OS)' == 'Windows_NT' ">
-    <Exec Command="autorest --input-file=&quot;swagger.json&quot; --csharp --use-datetimeoffset --override-client-name=Client --namespace=Gov.News.Api" />
-  </Target>
   
 
   <ItemGroup>
@@ -28,7 +25,7 @@
   </ItemGroup>
   
   <PropertyGroup>
-    <PreBuildEvent Condition="'$(OS)' != 'Windows_NT' ">autorest --verbose --input-file="/opt/app-root/src/Gov.News.Api.Client/swagger.json"   --csharp --use-datetimeoffset --override-client-name=Client --namespace=Gov.News.Api</PreBuildEvent>
+    <PreBuildEvent>autorest --verbose --input-file=/opt/app-root/src/Gov.News.Api.Client/swagger.json --csharp --use-datetimeoffset --override-client-name=Client --namespace=Gov.News.Api</PreBuildEvent>
   </PropertyGroup>
 
 </Project>
