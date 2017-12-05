@@ -83,7 +83,7 @@ if [ ! -z $VERSION_PREFIX ]; then
 fi
 
 # run the prebuild event.
-dotnet build /target:PreBuild
+
 dotnet pack "$DOTNET_STARTUP_PROJECT" -o "$DOTNET_APP_PATH" /p:AssemblyVersion=$VERSION_PREFIX$BUILDNUMBER /p:FileVersion=$VERSION_PREFIX$BUILDNUMBER /p:PackageVersion=$VERSION_PREFIX$BUILDNUMBER
 
 # only push the package if the nuget key was set.
