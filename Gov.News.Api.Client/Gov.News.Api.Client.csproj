@@ -13,8 +13,12 @@
     <PackageIconUrl>https://news.gov.bc.ca/favicon.ico</PackageIconUrl>
   </PropertyGroup>
 
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(OS)' == 'Windows_NT' ">
     <Exec Command="autorest --input-file=&quot;swagger.json&quot; --csharp --use-datetimeoffset --override-client-name=Client --namespace=Gov.News.Api" />
+  </Target>
+  
+    <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(OS)' != 'Windows_NT' ">
+    <Exec Command="autorest --input-file=&quot;/opt/app-root/Gov.News.Api.Client/swagger.json&quot; --output-folder=&quot;/opt/app-root/Gov.News.Api.Client/generated&quot;  --csharp --use-datetimeoffset --override-client-name=Client --namespace=Gov.News.Api" />
   </Target>
 
   <ItemGroup>
