@@ -83,7 +83,7 @@ if [ ! -z $VERSION_PREFIX ]; then
 fi
 
 mkdir -p .autorest 
-cp Gov.News.Api.Client\swagger.json .autorest
+cp Gov.News.Api.Client/swagger.json .autorest
 
 dotnet pack "$DOTNET_STARTUP_PROJECT" -o "$DOTNET_APP_PATH" /p:AssemblyVersion=$VERSION_PREFIX$BUILDNUMBER /p:FileVersion=$VERSION_PREFIX$BUILDNUMBER /p:PackageVersion=$VERSION_PREFIX$BUILDNUMBER
 
