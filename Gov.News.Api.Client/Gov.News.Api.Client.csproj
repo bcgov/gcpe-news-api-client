@@ -24,8 +24,12 @@
     <Folder Include="generated\" />
   </ItemGroup>
   
-  <PropertyGroup>
-    <PreBuildEvent>autorest --verbose --input-file=/opt/app-root/src/Gov.News.Api.Client/swagger.json --csharp --use-datetimeoffset --override-client-name=Client --namespace=Gov.News.Api</PreBuildEvent>
+  <PropertyGroup Condition="'$(OS)' == 'Windows_NT' ">
+    <PreBuildEvent>autorest --verbose --input-file=$(MSBuildProjectDirectory)\swagger.json --output-folder=$(MSBuildProjectDirectory)\generated --csharp --use-datetimeoffset --override-client-name=Client --namespace=Gov.News.Api</PreBuildEvent>
+  </PropertyGroup>
+  
+    <PropertyGroup Condition="'$(OS)' != 'Windows_NT' ">
+    <PreBuildEvent>autorest --verbose --input-file=$(MSBuildProjectDirectory)/swagger.json --csharp --use-datetimeoffset --override-client-name=Client --output-folder=$(MSBuildProjectDirectory)/generated  --namespace=Gov.News.Api</PreBuildEvent>
   </PropertyGroup>
 
 </Project>
