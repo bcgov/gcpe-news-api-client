@@ -14,7 +14,7 @@
   </PropertyGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="autorest --input-file=&quot;swagger.json&quot; --csharp --use-datetimeoffset --override-client-name=Client --namespace=Gov.News.Api --sync-methods=none" />
+    <Exec Command="autorest --input-file=&quot;swagger.json&quot; --csharp --use-datetimeoffset --override-client-name=Client --namespace=Gov.News.Api" />
   </Target>
 
   <ItemGroup>
@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Extensions\" />
     <Folder Include="generated\" />
   </ItemGroup>
 
