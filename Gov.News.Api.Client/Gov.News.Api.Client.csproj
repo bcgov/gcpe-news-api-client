@@ -13,8 +13,6 @@
     <PackageIconUrl>https://news.gov.bc.ca/favicon.ico</PackageIconUrl>
   </PropertyGroup>
 
-  
-
   <ItemGroup>
     <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.10" />
   </ItemGroup>
@@ -24,12 +22,12 @@
     <Folder Include="generated\" />
   </ItemGroup>
   
-  <PropertyGroup Condition="'$(OS)' == 'Windows_NT' ">
-    <PreBuildEvent>autorest --verbose --input-file=$(MSBuildProjectDirectory)\swagger.json --output-folder=$(MSBuildProjectDirectory)\generated --csharp --use-datetimeoffset --override-client-name=Client --namespace=Gov.News.Api</PreBuildEvent>
-  </PropertyGroup>
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(OS)' == 'Windows_NT'>
+    <Exec Command="autorest --verbose --input-file=$(MSBuildProjectDirectory)\swagger.json --output-folder=$(MSBuildProjectDirectory)\generated --csharp --use-datetimeoffset --override-client-name=Client --namespace=Gov.News.Api" />
+  </Target>
   
-    <PropertyGroup Condition="'$(OS)' != 'Windows_NT' ">
-    <PreBuildEvent>autorest --verbose --input-file=$(MSBuildProjectDirectory)/swagger.json --csharp --use-datetimeoffset --override-client-name=Client --output-folder=$(MSBuildProjectDirectory)/generated  --namespace=Gov.News.Api</PreBuildEvent>
-  </PropertyGroup>
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(OS)' != 'Windows_NT'>
+    <Exec Command="autorest --verbose --input-file=$(MSBuildProjectDirectory)/swagger.json --output-folder=$(MSBuildProjectDirectory)/generated --csharp --use-datetimeoffset --override-client-name=Client --namespace=Gov.News.Api" />
+  </Target>
 
 </Project>
