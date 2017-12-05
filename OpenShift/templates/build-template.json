@@ -121,7 +121,7 @@
     "status": {
         "lastVersion": 0
     }
-}
+},
 {
     "kind": "BuildConfig",
     "apiVersion": "v1",

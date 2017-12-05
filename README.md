@@ -1,7 +1,7 @@
 # gcpe-news-api-client
 C# Client for BC Gov News API.
 ======================
-
+ 
 Introduction
 ----------------
 This client is a combination of autorest generated code and human written extensions that allow a C# MVC web application to easily
