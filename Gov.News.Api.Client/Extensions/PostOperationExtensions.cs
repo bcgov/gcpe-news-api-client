@@ -62,9 +62,9 @@ namespace Gov.News.Api
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static Post GetPost(this IPostOperations operations, string reference)
+        public static Post Get(this IPostOperations operations, string reference)
         {
-            return System.Threading.Tasks.Task.Factory.StartNew(s => ((IPostOperations)s).GetPostAsync(reference), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            return System.Threading.Tasks.Task.Factory.StartNew(s => ((IPostOperations)s).GetAsync(reference), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
 
         /// <param name='operations'>
@@ -73,7 +73,7 @@ namespace Gov.News.Api
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Post> GetPostAsync(this IPostOperations operations, string reference, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Post> GetAsync(this IPostOperations operations, string reference, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetOneWithHttpMessagesAsync(reference, ClientExtensions.currentAPIVersion, null, cancellationToken).ConfigureAwait(false))
             {

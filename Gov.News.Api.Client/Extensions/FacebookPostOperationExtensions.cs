@@ -3,6 +3,7 @@
 namespace Gov.News.Api
 {
     using Gov.News.Api.Models;
+    using System;
     using System.Threading.Tasks;
 
 
@@ -33,14 +34,13 @@ namespace Gov.News.Api
             }
         }
 
-        /*
-        public static FacebookPost GetFacebookPostByKey(this IFacebookPostOperations operations, string key)
+        public static FacebookPost GetFacebookPost(this IFacebookPostOperations operations, string key)
         {
-            return System.Threading.Tasks.Task.Factory.StartNew(s => ((IFacebookPostOperations)s).GetFacebookPostByKeyAsync(key), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            return System.Threading.Tasks.Task.Factory.StartNew(s => ((IFacebookPostOperations)s).GetAsync(key), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
 
         /// </param>
-        public static async System.Threading.Tasks.Task<FacebookPost> GetFacebookPostByKeyAsync(this IFacebookPostOperations operations, string key, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<FacebookPost> GetAsync(this IFacebookPostOperations operations, string key, DateTimeOffset? timestamp = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetOneWithHttpMessagesAsync(key, ClientExtensions.currentAPIVersion, null, cancellationToken).ConfigureAwait(false))
             {
@@ -48,6 +48,5 @@ namespace Gov.News.Api
             }
         }
 
-    */
     }
 }

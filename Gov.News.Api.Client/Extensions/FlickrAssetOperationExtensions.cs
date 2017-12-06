@@ -33,11 +33,10 @@ namespace Gov.News.Api
             }
         }
 
-        /*
 
-        public static FlickrAsset GetFlickrAssetByKey(this IFlickrAssetOperations operations, string key)
+        public static FlickrAsset GetFlickrAsset(this IFlickrAssetOperations operations, string key)
         {
-            return System.Threading.Tasks.Task.Factory.StartNew(s => ((IFlickrAssetOperations)s).GetFlickrAssetByKeyAsync(key), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            return System.Threading.Tasks.Task.Factory.StartNew(s => ((IFlickrAssetOperations)s).GetAsync(key), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
 
         /// <param name='operations'>
@@ -48,7 +47,7 @@ namespace Gov.News.Api
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<FlickrAsset> GetFlickrAssetByKeyAsync(this IFlickrAssetOperations operations, string key, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<FlickrAsset> GetAsync(this IFlickrAssetOperations operations, string key, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetOneWithHttpMessagesAsync(key, ClientExtensions.currentAPIVersion, null, cancellationToken).ConfigureAwait(false))
             {
@@ -56,6 +55,6 @@ namespace Gov.News.Api
             }
         }
 
-    */
+   
     }
 }
