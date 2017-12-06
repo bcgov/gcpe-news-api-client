@@ -3,6 +3,7 @@
 namespace Gov.News.Api
 {
     using Gov.News.Api.Models;
+    using System;
     using System.Threading.Tasks;
 
 
@@ -28,27 +29,25 @@ namespace Gov.News.Api
         /// </param>
         public static async System.Threading.Tasks.Task<Minister> GetMinisterAsync(this IMinisterOperations operations, Ministry ministry, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetOneWithHttpMessagesAsync(ministry.Key, ClientExtensions.currentAPIVersion, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetOneWithHttpMessagesAsync(ministry.Key, ClientExtensions.currentAPIVersion,  null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
 
-        /*
 
-        public static Minister GetMinisterByKey(this IMinisterOperations operations, string key)
+        public static Minister Get(this IMinisterOperations operations, string key)
         {
-            return System.Threading.Tasks.Task.Factory.StartNew(s => ((IMinisterOperations)s).GetMinisterByKeyAsync(key), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            return System.Threading.Tasks.Task.Factory.StartNew(s => ((IMinisterOperations)s).GetAsync(key), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
         
-        public static async System.Threading.Tasks.Task<Minister> GetMinisterByKeyAsync(this IMinisterOperations operations, string key, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Minister> GetAsync(this IMinisterOperations operations, string key, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetOneWithHttpMessagesAsync(key, ClientExtensions.currentAPIVersion, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetOneWithHttpMessagesAsync(key, ClientExtensions.currentAPIVersion,  null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
 
-    */
     }
 }

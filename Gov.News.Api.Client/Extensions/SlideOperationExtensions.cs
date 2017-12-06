@@ -33,9 +33,9 @@ namespace Gov.News.Api
             }
         }
 
-        public static Slide GetSlideByKey(this ISlideOperations operations, string key)
+        public static Slide Get(this ISlideOperations operations, string key)
         {
-            return System.Threading.Tasks.Task.Factory.StartNew(s => ((ISlideOperations)s).GetSlideByKeyAsync(key), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            return System.Threading.Tasks.Task.Factory.StartNew(s => ((ISlideOperations)s).GetAsync(key), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
 
         /// <param name='operations'>
@@ -46,7 +46,7 @@ namespace Gov.News.Api
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Slide> GetSlideByKeyAsync(this ISlideOperations operations, string key, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Slide> GetAsync(this ISlideOperations operations, string key, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetOneWithHttpMessagesAsync(key, ClientExtensions.currentAPIVersion, null, cancellationToken).ConfigureAwait(false))
             {
