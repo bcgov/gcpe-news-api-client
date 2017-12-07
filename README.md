@@ -49,6 +49,17 @@ You will need to install Autorest prior to building the source.
 
 You may have to run the build more than once initially if using Visual Studio.  
 
+Removing a package
+------------------
+Note that nuget.org maps delete to unlist.
+
+If you wish to remove a package from nuget.org or another nuget repository, issue the following command:
+
+`nuget delete Gov.News.Api.Client <version-to-remove> -Source nuget.org -ApiKey <key>`
+
+(key is your Nuget.org key)
+
+
 Contribution
 ------------
 

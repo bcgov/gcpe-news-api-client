@@ -98,7 +98,7 @@ namespace Gov.News.Api
         /// </param>
         public static async System.Threading.Tasks.Task<IEnumerable<Post>> GetTopPostsAsync(this IPostOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetTopWithHttpMessagesAsync(ClientExtensions.currentAPIVersion, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetTopPostsWithHttpMessagesAsync(ClientExtensions.currentAPIVersion, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -121,7 +121,7 @@ namespace Gov.News.Api
         /// </param>
         public static async System.Threading.Tasks.Task<IEnumerable<Post>> GetFeaturePostsAsync(this IPostOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetFeatureWithHttpMessagesAsync(ClientExtensions.currentAPIVersion, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetFeaturePostsWithHttpMessagesAsync(ClientExtensions.currentAPIVersion, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
