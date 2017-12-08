@@ -5,6 +5,7 @@
 namespace Gov.News.Api
 {
     using Gov.News.Api.Models;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
 
@@ -60,6 +61,48 @@ namespace Gov.News.Api
                     return _result.Body;
                 }
             }
+
+        public static IDictionary<string, Post> GetTopPosts(this IMinistryOperations operations, IList<string> categories)
+        {
+            return System.Threading.Tasks.Task.Factory.StartNew(s => ((IMinistryOperations)s).GetTopPostsAsync(categories), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+        }
+
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<IDictionary<string, Post>> GetTopPostsAsync(this IMinistryOperations operations, System.Collections.Generic.IList<string> categories, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetTopPostsWithHttpMessagesAsync(ClientExtensions.currentAPIVersion, categories, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+
+
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        public static IDictionary<string, Post> GetCategoryFeaturePosts(this IMinistryOperations operations, IList<string> categories)
+        {
+            return System.Threading.Tasks.Task.Factory.StartNew(s => ((IMinistryOperations)s).GetFeaturePostsAsync(categories), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+        }
+
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<IDictionary<string, Post>> GetFeaturePostsAsync(this IMinistryOperations operations, IList<string> categories, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetFeaturePostsWithHttpMessagesAsync(ClientExtensions.currentAPIVersion, categories, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
 
     }
 }
