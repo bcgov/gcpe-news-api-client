@@ -246,9 +246,9 @@ namespace Gov.News.Api
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static IEnumerable<Post> GetMorePosts(this IPostOperations operations, string postType, int count, int skip)
+        public static IEnumerable<Post> GetMorePostsNoVersion(this IPostOperations operations, string postType, int count, int skip)
         {
-            return System.Threading.Tasks.Task.Factory.StartNew(s => ((IPostOperations)s).GetMorePostsAsync(postType, count, skip), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            return System.Threading.Tasks.Task.Factory.StartNew(s => ((IPostOperations)s).GetMorePostsNoVersionAsync(postType, count, skip), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
 
         /// <param name='operations'>
@@ -257,7 +257,7 @@ namespace Gov.News.Api
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<IEnumerable<Post>> GetMorePostsAsync(this IPostOperations operations, string postType, int count, int skip, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<IEnumerable<Post>> GetMorePostsNoVersionAsync(this IPostOperations operations, string postType, int count, int skip, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetMorePostsWithHttpMessagesAsync(ClientExtensions.currentAPIVersion, postType, count, skip, null, cancellationToken).ConfigureAwait(false))
             {

@@ -3,6 +3,7 @@
 namespace Gov.News.Api
 {
     using Gov.News.Api.Models;
+    using System;
     using System.Threading.Tasks;
 
 
@@ -36,9 +37,9 @@ namespace Gov.News.Api
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static System.Collections.Generic.IList<Category> GetSectorFromPost(this ISector operations, Post post)
+        public static System.Collections.Generic.IList<Category> GetSectorFromPost(this ISector operations, String key)
         {
-            return System.Threading.Tasks.Task.Factory.StartNew(s => ((ISector)s).GetSectorFromPostAsync(post), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            return System.Threading.Tasks.Task.Factory.StartNew(s => ((ISector)s).GetSectorFromPostAsync(key), operations, System.Threading.CancellationToken.None, System.Threading.Tasks.TaskCreationOptions.None, System.Threading.Tasks.TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
 
         /// <param name='operations'>
@@ -47,9 +48,9 @@ namespace Gov.News.Api
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<Category>> GetSectorFromPostAsync(this ISector operations, Post post, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<Category>> GetSectorFromPostAsync(this ISector operations, string key, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetFromPostWithHttpMessagesAsync(ClientExtensions.currentAPIVersion, post, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetFromPostKeyWithHttpMessagesAsync(ClientExtensions.currentAPIVersion, key, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
