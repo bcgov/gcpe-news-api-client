@@ -27,7 +27,7 @@
   </Target>
   
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(OS)' != 'Windows_NT'">
-    <Exec Command="autorest --verbose --input-file=https://news-api.pathfinder.bcgov/swagger/v1/swagger.json --output-folder=$(MSBuildProjectDirectory)/generated --csharp --use-datetimeoffset --generate-empty-classes --override-client-name=Client --namespace=Gov.News.Api" />
+    <Exec Command="curl -O https://news-api.pathfinder.bcgov/swagger/v1/swagger.json && autorest --verbose --input-file=swagger.json --output-folder=$(MSBuildProjectDirectory)/generated --csharp --use-datetimeoffset --generate-empty-classes --override-client-name=Client --namespace=Gov.News.Api" />
   </Target>
 
 </Project>
