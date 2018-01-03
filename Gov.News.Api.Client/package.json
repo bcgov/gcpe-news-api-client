@@ -4,7 +4,7 @@
   "description": "C# Client for BC Gov News API. ======================",
   "main": "index.js",
   "scripts": {
-    "generate": "autorest --verbose --input-file=${__dirname}/swagger.json --output-folder=${__dirname}/generated  --csharp --use-datetimeoffset --generate-empty-classes --override-client-name=Client  --namespace=namespace=Gov.News.Api"
+    "generate": "node generate"
   },
   "keywords": [],
   "author": "",
