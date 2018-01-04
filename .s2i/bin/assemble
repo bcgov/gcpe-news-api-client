@@ -84,6 +84,9 @@ fi
 
 dotnet pack "$DOTNET_STARTUP_PROJECT" -o "$DOTNET_APP_PATH" /p:AssemblyVersion=$VERSION_PREFIX$BUILDNUMBER /p:FileVersion=$VERSION_PREFIX$BUILDNUMBER /p:PackageVersion=$VERSION_PREFIX$BUILDNUMBER
 
+ls -R
+
+
 # only push the package if the nuget key was set.
 if [ ! -z $NUGET_KEY ]; then
   dotnet nuget push -k $NUGET_KEY /opt/app-root/app/*.nupkg -s nuget.org
