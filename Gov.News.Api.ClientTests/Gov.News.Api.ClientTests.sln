@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gov.News.Api.Client.Tests", "Gov.News.Api.ClientTests.csproj", "{DDBB55D3-0E52-42FA-9499-54BE4979DD4A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gov.News.Api.Client", "..\Gov.News.Api.Client\Gov.News.Api.Client.csproj", "{D09519EF-9598-4E84-84A9-CFDD62892F03}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDBB55D3-0E52-42FA-9499-54BE4979DD4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDBB55D3-0E52-42FA-9499-54BE4979DD4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDBB55D3-0E52-42FA-9499-54BE4979DD4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDBB55D3-0E52-42FA-9499-54BE4979DD4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D09519EF-9598-4E84-84A9-CFDD62892F03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D09519EF-9598-4E84-84A9-CFDD62892F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D09519EF-9598-4E84-84A9-CFDD62892F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D09519EF-9598-4E84-84A9-CFDD62892F03}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {457C2232-44F4-4FC7-9C6D-7A134A68EC84}
+	EndGlobalSection
+EndGlobal

@@ -70,6 +70,36 @@
     "status": {
         "dockerImageRepository": ""
     }
+},{
+    "kind": "ImageStream",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "dotnet-sonar",
+        "generation": 1,
+        "creationTimestamp": null,
+        "labels": {
+            "template": "news-api-client-build"
+        }
+    },
+    "spec": {
+        "lookupPolicy": {
+            "local": false
+        },
+        "tags": [
+            {
+                "name": "latest",
+                "annotations": null,                
+                "generation": 1,
+                "importPolicy": {},
+                "referencePolicy": {
+                    "type": "Source"
+                }
+            }
+        ]
+    },
+    "status": {
+        "dockerImageRepository": ""
+    }
 },
 {
     "kind": "BuildConfig",
