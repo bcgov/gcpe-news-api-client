@@ -17,16 +17,16 @@ namespace Gov.News.Api.ClientTests
     public class TwitterFeed : ApiTestBase
     {
         /// <summary>
-        /// Test GET search
+        /// Test GET Twitter feed
         /// </summary>
         [Fact]
-        public async void InvalidGet()
+        public async void Get()
         {
             bool foundException = false;
             try
             {
                 // attempt a get using an invalid key.
-                var twitterFeed = await _client.TwitterFeed.GetOneAsync(invalidPathKey, currentApiVersion);
+                var twitterFeed = await _client.TwitterFeed.GetOneAsync(currentApiVersion);
             }
             catch (HttpOperationException e)
             {
@@ -35,7 +35,7 @@ namespace Gov.News.Api.ClientTests
                     foundException = true;
                 }
             }
-            Assert.True(foundException); 
+            Assert.True(foundException == false); 
         }       
     }
 }

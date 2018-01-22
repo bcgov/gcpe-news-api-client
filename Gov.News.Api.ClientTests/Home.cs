@@ -11,27 +11,19 @@ using System.Text;
 using Newtonsoft.Json;
 using System.Net;
 
-using System.Reflection;
-
 
 namespace Gov.News.Api.ClientTests
 {
-    public class Article : ApiTestBase
+    public class Home : ApiTestBase
     {
         /// <summary>
-        /// Test GET search
+        /// Test GET Home
         /// </summary>
         [Fact]
-        public async void GetAll()
+        public async void GetHome()
         {
-            // get an article.
-            var item = await _client.Article.GetAllAsync(currentApiVersion);
-
-            Assert.True(item != null);
-
-            string key = item[0].ArticleKey;  
-            
+            var home = await _client.Home.GetAsync(currentApiVersion);
+            Assert.True(home != null);            
         }
-
     }
 }
