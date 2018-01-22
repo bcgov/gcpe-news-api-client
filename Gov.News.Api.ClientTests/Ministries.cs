@@ -21,16 +21,22 @@ namespace Gov.News.Api.ClientTests
         [Fact]
         public async void Get()
         {
-            var ministryList = await _client.Ministry.GetAllAsync(currentApiVersion);
+            var ministryList = await _client.Ministries.GetAllAsync(currentApiVersion);
 
             Assert.True(ministryList.Count > 0);
             String key = ministryList[0].Key;
 
             // get a single ministry.
 
-            var ministry = await _client.Ministry.GetOneAsync(key, currentApiVersion);
+            var ministry = await _client.Ministries.GetOneAsync(key, currentApiVersion);
 
             Assert.True(ministry != null);
+
+            // get a minister.
+
+            var minister = await _client.Ministries.GetMinisterAsync(key, currentApiVersion);
+            Assert.True(minister != null);
+
         }
         
 

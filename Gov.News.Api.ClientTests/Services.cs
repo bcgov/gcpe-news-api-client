@@ -10,38 +10,39 @@ using Xunit;
 using System.Text;
 using Newtonsoft.Json;
 using System.Net;
-
+using Gov.News.Api.Models;
 
 namespace Gov.News.Api.ClientTests
 {
-    public class Theme : ApiTestBase
+    public class Services : ApiTestBase
     {
         /// <summary>
-        /// Test GET themes
+        /// Test GET services
         /// </summary>
         [Fact]
         public async void GetAll()
         {
-            var themes = await _client.Themes.GetAllAsync(currentApiVersion);
-            Assert.True(themes != null);
+            var services = await _client.Services.GetAllAsync(currentApiVersion);
+            var service = services[0];
+            Assert.True(service != null);
         }
 
         /// <summary>
-        /// Test GET themes
+        /// Test GET services
         /// </summary>
         [Fact]
         public async void GetOne()
         {
-            var themes = await _client.Themes.GetAllAsync(currentApiVersion);
-            Assert.True(themes != null);
+            var services = await _client.Services.GetAllAsync(currentApiVersion);
+            var service = services[0];
 
-            var theme = themes[0];
-            Assert.True(theme != null);
-
-            var second = await _client.Themes.GetOneAsync(theme.Key, currentApiVersion);
+            var second = await _client.Services.GetOneAsync(service.Key, currentApiVersion);
 
             Assert.True(second != null);
-            Assert.Equal(second.Key, theme.Key);
+
+            Assert.Equal(service.Key, second.Key);
         }
+
+
     }
 }
