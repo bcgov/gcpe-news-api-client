@@ -14,34 +14,34 @@ using System.Net;
 
 namespace Gov.News.Api.ClientTests
 {
-    public class Theme : ApiTestBase
+    public class Tags : ApiTestBase
     {
         /// <summary>
-        /// Test GET themes
+        /// Test GET tags
         /// </summary>
         [Fact]
         public async void GetAll()
         {
-            var themes = await _client.Themes.GetAllAsync(currentApiVersion);
-            Assert.True(themes != null);
+            var tag = await _client.Tags.GetAllAsync(currentApiVersion);
+
+            Assert.True(tag != null);
         }
 
         /// <summary>
-        /// Test GET themes
+        /// Test GET tag (one)
         /// </summary>
         [Fact]
         public async void GetOne()
         {
-            var themes = await _client.Themes.GetAllAsync(currentApiVersion);
-            Assert.True(themes != null);
+            var tags = await _client.Tags.GetAllAsync(currentApiVersion);
+            var tag = tags[0];
 
-            var theme = themes[0];
-            Assert.True(theme != null);
+            Assert.True(tag != null);
 
-            var second = await _client.Themes.GetOneAsync(theme.Key, currentApiVersion);
+            var second = await _client.Tags.GetOneAsync(tag.Key, currentApiVersion);
 
             Assert.True(second != null);
-            Assert.Equal(second.Key, theme.Key);
+            Assert.Equal(tag.Key, second.Key);
         }
     }
 }

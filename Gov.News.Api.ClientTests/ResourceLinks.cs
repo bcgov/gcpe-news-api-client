@@ -14,16 +14,16 @@ using System.Net;
 
 namespace Gov.News.Api.ClientTests
 {
-    public class Newsroom : ApiTestBase
+    public class ResourceLinks : ApiTestBase
     {
         /// <summary>
-        /// Test GET Newsroom
+        /// Test GET search
         /// </summary>
         [Fact]
-        public async void GetNewsroom()
+        public async void GetAll()
         {
-            var newsroom = await _client.Newsroom.GetAsync(currentApiVersion);
-            Assert.True(newsroom != null);            
-        }
+            var links = await _client.ResourceLinks.GetAllAsync(currentApiVersion);
+            Assert.True(links != null);
+        }        
     }
 }
