@@ -70,7 +70,7 @@ namespace Gov.News.Api.ClientTests
 
             var post = await _client.Posts.GetOneAsync(key, currentApiVersion);
 
-            string indexKind = post.Kind;
+            string indexKind = "ministries";
             string indexKey = post.LeadMinistryKey;
 
             var latest = await _client.Posts.GetLatestAsync(indexKind, indexKey, currentApiVersion);
@@ -93,7 +93,7 @@ namespace Gov.News.Api.ClientTests
 
             var post = await _client.Posts.GetOneAsync(key, currentApiVersion);
 
-            string indexKind = post.Kind;
+            string indexKind = "ministries";
             string indexKey = post.LeadMinistryKey;
 
             var allKeys = await _client.Posts.GetAllKeysAsync(indexKind, indexKey, currentApiVersion);

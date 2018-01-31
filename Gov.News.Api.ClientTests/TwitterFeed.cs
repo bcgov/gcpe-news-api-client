@@ -26,7 +26,7 @@ namespace Gov.News.Api.ClientTests
             try
             {
                 // attempt a get using an invalid key.
-                var twitterFeed = await _client.TwitterFeed.GetOneAsync(currentApiVersion);
+                var twitterFeed = await _client.TwitterFeed.GetNewestAsync(currentApiVersion);
             }
             catch (HttpOperationException e)
             {
