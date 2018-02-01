@@ -218,6 +218,79 @@
     }
 },
 {
+    "kind": "BuildConfig",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "news-api-client-tests",
+        "creationTimestamp": null,
+        "labels": {
+            "app": "news-api-client"
+        }
+    },
+    "spec": {
+        "triggers": [
+            {
+                "type": "GitHub",
+                "github": {
+                    "secret": "3XtnspHIC8mT7UdgI8hT"
+                }
+            },
+            {
+                "type": "Generic",
+                "generic": {
+                    "secret": "S9eYwKjY8a-hCGo-JSsC"
+                }
+            },
+            {
+                "type": "ImageChange",
+                "imageChange": {}
+            },
+            {
+                "type": "ConfigChange"
+            }
+        ],
+        "runPolicy": "Serial",
+        "source": {
+            "type": "Git",
+            "git": {
+                "uri": "https://github.com/bcgov/gcpe-news-api-client.git"
+            }
+        },
+        "strategy": {
+            "type": "Source",
+            "sourceStrategy": {
+                "from": {
+                    "kind": "ImageStreamTag",
+                    "name": "s2i-dotnetcore-autorest:latest"
+                },
+                "env": [
+                    {
+                        "name": "DOTNET_STARTUP_PROJECT",
+                        "value": "Gov.News.Api.ClientTests"
+                    },
+					{
+						"name": "DOTNET_TEST_PROJECTS",
+						"value": "Gov.News.Api.ClientTests"
+					},
+					{
+						"name": "DOTNET_TEST_ONLY",
+						"value": "true"
+					}
+                ]
+            }
+        },
+        "output": {},
+        "resources": {},
+        "postCommit": {},
+        "nodeSelector": null,
+        "successfulBuildsHistoryLimit": 5,
+        "failedBuildsHistoryLimit": 5
+    },
+    "status": {
+        "lastVersion": 0
+    }
+},
+{
     "kind": "ImageStream",
     "apiVersion": "v1",
     "metadata": {
