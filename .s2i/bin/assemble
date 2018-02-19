@@ -127,35 +127,29 @@ elif [ -n "$SNYK_TOKEN" ]; then
 		snyk test --file="$DOTNET_STARTUP_PROJECT"
 elif [ -n "$DOTNET_TEST_ONLY" ]; then
 	echo "Skipping application publish due to test ony flag set."
-else	
-	# Build and publish the application for production usage
-	echo "---> Publishing application..."
-	dotnet publish "$DOTNET_STARTUP_PROJECT" -f "$DOTNET_FRAMEWORK" -c "$DOTNET_CONFIGURATION" \
-		   --self-contained false /p:PublishWithAspNetCoreTargetManifest=$DOTNET_ASPNET_STORE -o "$DOTNET_APP_PATH"
-
-	# check if the assembly used by the script exists
-	if [ ! -f "$DOTNET_APP_PATH/${APP_DLL_NAME}" ]; then
-	  echo "error: Build output does not contain entrypoint assembly: ${APP_DLL_NAME}"
-	  exit 1
-	fi
-
-	# Create run script in publish folder
 	cat << EOF >"$DOTNET_APP_PATH/$DOTNET_DEFAULT_CMD"
 #!/bin/bash
 
-exec dotnet ${APP_DLL_NAME} \$@
+echo skipping application run. \$@
 EOF
-	chmod +x "$DOTNET_APP_PATH/$DOTNET_DEFAULT_CMD"
+else	
+	# Build and publish the application for production usage
+	echo "---> Publishing application..."
+	
+# get the text after the last dash in the openshift build name.
+BUILDNUMBER=${OPENSHIFT_BUILD_NAME##*-} 
 
-	if [ "$DOTNET_PACK" == "true" ]; then
-	  echo "---> Packing application..."
-	  fix-permissions $DOTNET_APP_PATH
-	  tar -czf /opt/app-root/app.tar.gz -C $DOTNET_APP_PATH .
-	fi
 
-	# cleanup NuGet artifacts
-	rm -rf ~/{.local,.nuget}
+if [ ! -z $VERSION_PREFIX ]; then
+  VERSION_PREFIX=1.0.0
+fi
+dotnet build "$DOTNET_STARTUP_PROJECT"
+dotnet pack "$DOTNET_STARTUP_PROJECT" -o "$DOTNET_APP_PATH" /p:AssemblyVersion=$VERSION_PREFIX$BUILDNUMBER /p:FileVersion=$VERSION_PREFIX$BUILDNUMBER /p:PackageVersion=$VERSION_PREFIX$BUILDNUMBER
 
-	# fix permissions
-	fix-permissions /opt/app-root
+
+# only push the package if the nuget key was set.
+if [ ! -z $NUGET_KEY ]; then
+  dotnet nuget push -k $NUGET_KEY /opt/app-root/app/*.nupkg -s nuget.org
+fi
+
 fi
