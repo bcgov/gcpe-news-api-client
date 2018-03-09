@@ -1,0 +1,184 @@
+
+{
+  "kind": "Template",
+  "apiVersion": "v1",
+  "metadata":
+  {
+    "name": "news-api-client-build",
+    "annotations":
+    {
+      "description": "Contains build objects",
+      "tags": "aspnetcore",
+      "iconClass": "icon-github"
+    }
+  },
+  "labels":
+  {
+    "template": "news-api-client-build"
+  },
+  "objects": [ 
+{
+    "kind": "BuildConfig",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "${APPLICATION_NAME}",
+        "creationTimestamp": null,
+        "labels": {
+            "app": "${APPLICATION_NAME}"
+        }
+    },
+    "spec": {
+        "triggers": [
+            {
+                "type": "ImageChange",
+                "imageChange": {}
+            },
+            {
+                "type": "ConfigChange"
+            }
+        ],
+        "runPolicy": "Serial",
+        "source": {
+            "type": "Git",
+            "git": {
+                "uri": "https://github.com/bcgov/gcpe-news-api-client.git"
+            }
+        },
+        "strategy": {
+            "type": "Source",
+            "sourceStrategy": {
+                "from": {
+                    "kind": "ImageStreamTag",
+                    "name": "s2i-dotnetcore-autorest:latest"
+                },
+                "env": [
+                    {
+                        "name": "DOTNET_STARTUP_PROJECT",
+                        "value": "Gov.News.Api.Client"
+                    }
+                ]
+            }
+        },
+        "output": {},
+        "resources": {},
+        "postCommit": {},
+        "nodeSelector": null,
+        "successfulBuildsHistoryLimit": 5,
+        "failedBuildsHistoryLimit": 5
+    },
+    "status": {
+        "lastVersion": 0
+    }
+},
+{
+    "kind": "BuildConfig",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "${APPLICATION_NAME}-tests",
+        "creationTimestamp": null,
+        "labels": {
+            "app": "${APPLICATION_NAME}"
+        }
+    },
+    "spec": {
+        "triggers": [           
+            {
+                "type": "ImageChange",
+                "imageChange": {}
+            },
+            {
+                "type": "ConfigChange"
+            }
+        ],
+        "runPolicy": "Serial",
+        "source": {
+            "type": "Git",
+            "git": {
+                "uri": "${SOURCE_REPOSITORY_URL}"
+            }
+        },
+        "strategy": {
+            "type": "Source",
+            "sourceStrategy": {
+                "from": {
+                    "kind": "ImageStreamTag",
+                    "name": "s2i-dotnetcore-autorest:latest"
+                },
+                "env": [
+                    {
+                        "name": "DOTNET_STARTUP_PROJECT",
+                        "value": "Gov.News.Api.ClientTests"
+                    },
+					{
+						"name": "DOTNET_TEST_PROJECTS",
+						"value": "Gov.News.Api.ClientTests"
+					},
+					{
+						"name": "DOTNET_TEST_ONLY",
+						"value": "true"
+					}
+                ]
+            }
+        },
+        "output": {},
+        "resources": {},
+        "postCommit": {},
+        "nodeSelector": null,
+        "successfulBuildsHistoryLimit": 5,
+        "failedBuildsHistoryLimit": 5
+    },
+    "status": {
+        "lastVersion": 0
+    }
+}
+  ],
+  "parameters": [
+    {
+      "name": "APPLICATION_NAME",
+      "displayName": "Application Name",
+      "description": "The name given to the application",
+      "required": true,
+      "value": "news-api-client"
+    },
+    {
+      "name": "BUILD_PROJECT",
+      "displayName": "Build Project",
+      "description": "The openshift project where builds and target images are stored.",
+      "required": true,
+      "value": "gcpe-news-tools"
+    },
+    {
+      "name": "DEPLOYMENT_TYPE",
+      "displayName": "Deployment Type",
+      "description": "The name assigned to the imagestreams defined in this template.",
+      "required": true,
+      "value": "latest"
+    },
+    {
+      "name": "SOURCE_REPOSITORY_URL",
+      "displayName": "Source Repository",
+      "description": "The source repository to use for the builds.",
+      "required": true,
+      "value": "https://github.com/bcgov/gcpe-news-api-client.git"
+    },	
+    {
+      "name": "GIT_REFERENCE",
+      "displayName": "Git Reference",
+      "description": "Optional branch, tag, or commit.",
+      "required": true,
+      "value": "master"
+    },
+	{
+      "name": "DATABASE_VOLUME_CAPACITY",
+      "displayName": "Database volume capacity",
+      "description": "Size of the database used for SonarQube",
+      "value": "5Gi"
+    },
+	{
+      "name": "DATABASE_SERVICE_NAME",
+      "displayName": "Database service name",
+      "description": "Name of the database service",
+      "value": "postgresql-sonarqube"
+    }
+  ]
+}
