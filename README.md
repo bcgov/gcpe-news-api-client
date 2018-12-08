@@ -29,7 +29,7 @@ Developer Prerequisites
 **Gov.News.Api.Client**
 - Node.js 
 - Visual Studio 2017
-- Dotnet Core 2.1
+- Dotnet Core 2.2
 
 **DevOps**
 - OpenShift Container Platform 3.6 or newer (Origin is supported)
