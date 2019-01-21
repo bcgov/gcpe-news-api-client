@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.AspNetCore.Hosting;
-
-using System.IO;
-using System.Net.Http;
 
 namespace Gov.News.Api.ClientTests
 {
@@ -17,7 +10,7 @@ namespace Gov.News.Api.ClientTests
 
         /// <summary>
         /// Setup the test
-        /// </summary>        
+        /// </summary>
         public ApiTestBase()
         {
             _client = new Gov.News.Api.Client();
