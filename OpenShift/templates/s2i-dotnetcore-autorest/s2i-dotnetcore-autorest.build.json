@@ -1,0 +1,154 @@
+{
+  "kind": "Template",
+  "apiVersion": "v1",
+  "metadata":
+  {
+    "name": "news-api-client-build",
+    "annotations":
+    {
+      "description": "Contains build objects",
+      "tags": "aspnetcore",
+      "iconClass": "icon-github"
+    }
+  },
+  "labels":
+  {
+    "template": "news-api-client-build"
+  },
+  "objects": [ 
+    
+{
+    "kind": "ImageStream",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "${APPLICATION_NAME}",
+        "generation": 1,
+        "creationTimestamp": null,
+        "labels": {
+            "template": "${APPLICATION_NAME}-build"
+        }
+    },
+    "spec": {
+        "lookupPolicy": {
+            "local": false
+        },
+        "tags": [
+            {
+                "name": "latest",
+                "annotations": null,                
+                "generation": 1,
+                "importPolicy": {},
+                "referencePolicy": {
+                    "type": "Source"
+                }
+            }
+        ]
+    },
+    "status": {
+        "dockerImageRepository": ""
+    }
+},
+{
+    "kind": "BuildConfig",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "s2i-dotnetcore-autorest",
+        "creationTimestamp": null,
+        "labels": {
+            "app": "${APPLICATION_NAME}",
+            "template": "${APPLICATION_NAME}-build"
+        }
+    },
+    "spec": {
+        "triggers": [
+            {
+                "type": "ConfigChange"
+            }
+        ],
+        "runPolicy": "Serial",
+        "source": {
+            "type": "Git",
+            "dockerfile": "FROM dotnet-runtime\r\n# This image provides a .NET Core 2.0 environment you can use to run your .NET\r\n# applications.\r\n\r\nENV DOTNET_CLI_TELEMETRY_OPTOUT 1\r\n\r\n# This setting is a workaround for issues with dotnet and certain docker versions\r\nENV LTTNG_UST_REGISTER_TIMEOUT 0\r\n\r\n# Default to UTF-8 file.encoding\r\n# Default to UTF-8 file.encoding\r\nENV PATH=/opt/app-root/src/.local/bin:/opt/app-root/src/bin:/opt/app-root/node_modules/.bin:${PATH} \\\r\n    STI_SCRIPTS_PATH=/usr/libexec/s2i\r\n\r\n    \r\nLABEL io.k8s.description=\"Platform for building and running .NET Core 2.0 applications\"       io.k8s.display-name=\".NET Core 2.0\"       io.openshift.s2i.scripts-url=image:///usr/libexec/s2i       io.openshift.tags=\"builder,.net,dotnet,dotnetcore,rh-dotnet20\"       io.openshift.expose-services=\"8080:http\"       io.s2i.scripts-url=image:///usr/libexec/s2i\r\n\r\n# Labels consumed by Red Hat build service\r\nLABEL name=\"dotnet/dotnet-20-rhel7\"       com.redhat.component=\"rh-dotnet20-docker\"       version=\"2.0\"       release=\"1\"       architecture=\"x86_64\"\r\n\r\n# Switch to root for package installs\r\nUSER 0\r\n\r\nENV NVM_DIR /usr/local/nvm\r\nENV NODE_VERSION  v8.9.1\r\n\r\n# Copy the S2I scripts from the specific language image to $STI_SCRIPTS_PATH.\r\nCOPY ./s2i/bin/ /usr/libexec/s2i\r\n\r\nRUN  rm -R /opt/rh/rh-nodejs6 \\\r\n    \u0026\u0026 mkdir /opt/rh/rh-nodejs6 \\\r\n    \u0026\u0026 touch /opt/rh/rh-nodejs6/enable \\\r\n    \u0026\u0026 chmod a+rx /opt/rh/rh-nodejs6/enable \\\r\n    \u0026\u0026 touch ~/.bash_profile \\\r\n    \u0026\u0026 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash \\\r\n    \u0026\u0026 . $NVM_DIR/nvm.sh \\\r\n    \u0026\u0026 nvm ls-remote \\\r\n    \u0026\u0026 nvm install $NODE_VERSION \\\r\n    \u0026\u0026 nvm alias default $NODE_VERSION \\\r\n    \u0026\u0026 nvm use default \\\r\n    \u0026\u0026 npm install -g autorest \\\r\n    \u0026\u0026 chmod -R a+rwx /usr/local/nvm \\\r\n    \u0026\u0026 yum install -y curl \\\r\n    \u0026\u0026 yum clean all -y \\\r\n    \u0026\u0026 mkdir -p /opt/app-root \\\r\n    \u0026\u0026 chmod -R a+rwx /opt/app-root \\\r\n    \u0026\u0026 chown -R 1001:0 /opt/app-root \u0026\u0026 fix-permissions /opt/app-root\r\n\r\n# Run container by default as user with id 1001 (default)\r\nUSER 1001\r\n\r\nenv PATH \"$PATH:/usr/local/nvm/versions/node/v8.9.1/bin/\" \r\n\r\n# Directory with the sources is set as the working directory.\r\nWORKDIR /opt/app-root/src\r\n\r\n# Set the default CMD to print the usage of the language image.\r\nCMD /usr/libexec/s2i/usage\r\n",
+            "git": {
+                "uri": "${SOURCE_REPOSITORY_URL}",
+                "ref": "2.0-dev"
+            },
+            "contextDir": "2.0/build"
+        },
+        "strategy": {
+            "type": "Docker",
+            "dockerStrategy": {
+                "from": {
+                    "kind": "ImageStreamTag",
+                    "name": "dotnet:2.0"
+                },
+                "forcePull": true
+            }
+        },
+        "output": {
+            "to": {
+                "kind": "ImageStreamTag",
+                "name": "${APPLICATION_NAME}:latest"
+            }
+        },
+        "resources": {},
+        "postCommit": {},
+        "nodeSelector": null
+    },
+    "status": {
+        "lastVersion": 0
+    }
+}
+
+
+  ],
+  "parameters": [
+    {
+      "name": "APPLICATION_NAME",
+      "displayName": "Application Name",
+      "description": "The name given to the application",
+      "required": true,
+      "value": "s2i-dotnetcore-autorest"
+    },
+    {
+      "name": "BUILD_PROJECT",
+      "displayName": "Build Project",
+      "description": "The openshift project where builds and target images are stored.",
+      "required": true,
+      "value": "gcpe-news-tools"
+    },
+    {
+      "name": "DEPLOYMENT_TYPE",
+      "displayName": "Deployment Type",
+      "description": "The name assigned to the imagestreams defined in this template.",
+      "required": true,
+      "value": "latest"
+    },
+    {
+      "name": "SOURCE_REPOSITORY_URL",
+      "displayName": "Source Repository",
+      "description": "The source repository to use for the builds.",
+      "required": true,
+      "value": "https://github.com/redhat-developer/s2i-dotnetcore.git"
+    },	
+    {
+      "name": "GIT_REFERENCE",
+      "displayName": "Git Reference",
+      "description": "Optional branch, tag, or commit.",
+      "required": true,
+      "value": "master"
+    },
+	{
+      "name": "DATABASE_VOLUME_CAPACITY",
+      "displayName": "Database volume capacity",
+      "description": "Size of the database used for SonarQube",
+      "value": "5Gi"
+    },
+	{
+      "name": "DATABASE_SERVICE_NAME",
+      "displayName": "Database service name",
+      "description": "Name of the database service",
+      "value": "postgresql-sonarqube"
+    }
+  ]
+}

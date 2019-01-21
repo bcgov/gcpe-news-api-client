@@ -16,15 +16,6 @@ namespace Gov.News.Api.ClientTests
 {
     public class FacebookPosts : ApiTestBase
     {
-        /// <summary>
-        /// Test GET Newest Facebook Post
-        /// </summary>
-        [Fact]
-        public async Task GetNewest()
-        {
-            var facebookPost = await _client.FacebookPosts.GetNewestAsync(currentApiVersion);
-            Assert.True(facebookPost != null);
-        }
 
         /// <summary>
         /// Test GET Facebook Post by URI
@@ -32,11 +23,17 @@ namespace Gov.News.Api.ClientTests
         [Fact]
         public async Task GetByUri()
         {
-            var newestFacebookPost = await _client.FacebookPosts.GetNewestAsync(currentApiVersion);
+            var home = await _client.Home.GetAsync(currentApiVersion);
 
-            var facebookPost = await _client.FacebookPosts.GetByUriAsync(currentApiVersion, newestFacebookPost.Key);
+            var post = await _client.Posts.GetOneAsync(home.FeaturePostKey, currentApiVersion);
 
-            Assert.Equal(newestFacebookPost.Key, facebookPost.Key);
+            if (post.AssetUrl.ToLower().Contains("facebook"))
+            {
+
+                var facebookPost = await _client.FacebookPosts.GetByUriAsync(currentApiVersion, post.AssetUrl);
+
+                Assert.Equal(post.AssetUrl, facebookPost.Key);
+            }            
         }
     }
 }
