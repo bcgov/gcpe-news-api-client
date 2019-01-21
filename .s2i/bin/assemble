@@ -104,6 +104,7 @@ for TEST_PROJECT in $DOTNET_TEST_PROJECTS; do
     echo "---> Restoring test project ($TEST_PROJECT) dependencies..."
     dotnet restore "$TEST_PROJECT" $RESTORE_OPTIONS
     echo "---> Running test project: $TEST_PROJECT..."
+    dotnet publish "$TEST_PROJECT" -f "$DOTNET_FRAMEWORK" -c "$DOTNET_CONFIGURATION"
     dotnet test "$TEST_PROJECT" -f "$DOTNET_FRAMEWORK"
 done
 
