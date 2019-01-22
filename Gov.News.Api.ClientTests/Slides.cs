@@ -1,15 +1,4 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.TestHost;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
 using Xunit;
-using System.Text;
-using Newtonsoft.Json;
-using System.Net;
 
 
 namespace Gov.News.Api.ClientTests
@@ -24,7 +13,7 @@ namespace Gov.News.Api.ClientTests
         {
             var slides = await _client.Slides.GetAllAsync(currentApiVersion);
 
-            Assert.True(slides != null);            
+            Assert.True(slides != null);
         }
 
 
@@ -38,7 +27,7 @@ namespace Gov.News.Api.ClientTests
 
             var slide = slides[0];
 
-            var second = await _client.Slides.GetOneAsync(slide.SlideId.ToString(), currentApiVersion);
+            var second = await _client.Slides.GetOneAsync(slide.Key, currentApiVersion);
 
             Assert.True(slide != null);
             Assert.Equal(slide.Key, second.Key);
