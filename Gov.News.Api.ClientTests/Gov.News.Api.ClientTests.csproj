@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../Gov.News.Api.Client/Gov.News.Api.Client.csproj" />
+    <ProjectReference Include="..\Gov.News.Api.Client\Gov.News.Api.Client.csproj" />
   </ItemGroup>
 
 
