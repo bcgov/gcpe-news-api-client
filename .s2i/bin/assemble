@@ -85,7 +85,7 @@ fi
 # Override assembly name
 if [ -n "$DOTNET_ASSEMBLY_NAME" ]; then
   APP_DLL_NAME="${DOTNET_ASSEMBLY_NAME}.dll"
-fi
+fi 
 
 # Build nuget sources list for when doing the restore
 RESTORE_OPTIONS="--disable-parallel"
