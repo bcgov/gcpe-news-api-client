@@ -4,7 +4,7 @@ namespace Gov.News.Api.ClientTests
 {
     public abstract class ApiTestBase
     {
-        protected readonly IClient _client;
+        protected readonly Gov.News.Api.IClient _client;
         protected const string currentApiVersion = "1.0";
         protected const string invalidPathKey = "invalidPathKey1234567890";
 
