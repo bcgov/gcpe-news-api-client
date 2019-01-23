@@ -3,7 +3,7 @@
 # S2I Assemble Script
 # For the BC Government GCPE News WebApp project
 # This script is based on the S2I assemble script for dotnet 2, with the following extra features:
-#
+# 
 # 1. A Sonarqube scan can be done on the source
 # 2. A Snyk scan can be done on the source
 # 3. Dotnet tests can be done
