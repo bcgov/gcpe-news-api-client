@@ -278,3 +278,5 @@ __pycache__/
 *.sonarqube
 
 generated
+
+!.s2i/bin/assemble
