@@ -77,60 +77,10 @@ EOF
 # -----------------------------------------------------------------------------------------------------------------
 # Default Settings:
 # -----------------------------------------------------------------------------------------------------------------
-DEFAULT_CONTAINERS="news-dashboard"
+DEFAULT_CONTAINERS="news-api-client"
 # -----------------------------------------------------------------------------------------------------------------
 # Functions:
 # -----------------------------------------------------------------------------------------------------------------
-build-web() {
-
-  
-
-
-  #
-  # gnd-web
-  #
-  # The nginx-runtime image is used for the final runtime image.
-  # The nodejs-build image is used to build the artifacts for the angular distribution.
-  # The angular-on-nginx image is copy of the nginx-runtime image complete with a copy of the build artifacts.
-  #
-  echo -e "\nBuilding nginx-runtime image ..."
-  docker build -q \
-    -t 'frontend-nginx-runtime' \
-    -f 'openshift/templates/runtime/Dockerfile' 'openshift/templates/runtime/'
-
-  # This image only exists to pre-create the npm cache directory
-  # so it can be properly used as a volume, it doesn't apply to openshift
-  echo -e "\nBuilding frontend-yarn-builder image ..."
-  docker build -q \
-    -t 'frontend-yarn-builder' \
-    -f 'openshift/templates/builder/Dockerfile' 'openshift/templates/builder/'
-
-	
-  if [ -t 0 ]; then
-    # color npm output in interactive terminal
-	NPM_COLOR="always"
-  else
-    NPM_COLOR="true"
-  fi
-
-  echo -e "\nBuilding news-dashboard image ..."
-  
-  SECONDS=0
-  ${S2I_EXE} build \
-    -e "NPM_CONFIG_COLOR=${NPM_COLOR}" \
-    -e "NPM_CONFIG_LOGLEVEL=timing" \
-    -e "HTTP_PROXY=${HTTP_PROXY}" \
-    -e "HTTPS_PROXY=${HTTPS_PROXY}" \
-    -e "NG_BASE_HREF=${WEB_BASE_HREF}" \
-    -e "NG_DEPLOY_URL=${WEB_DEPLOY_URL}" \
-    --volume "${COMPOSE_PROJECT_NAME}_gnd-npm-cache:/opt/app-root/src/.npm" \
-	--runtime-image frontend-nginx-runtime \
-    -a /opt/app-root/src/dist:app/dist \
-    . frontend-yarn-builder news-dashboard
-	
-	duration=$SECONDS
-	echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."	
-}
 
 build-test() {
   #
@@ -147,7 +97,6 @@ build-test() {
   docker tag $BASE_IMAGE $BASE_IMAGE_NAME
   echo -e "\nBuilding image from ${BASE_IMAGE_NAME}..."
   
-  # temporarily change directory to the hub API project - as we don't want to use S2I scripts for the angular front end.
   ${S2I_EXE} build \
     -e "DOTNET_STARTUP_PROJECT=Gov.News.Api.Client" \
 	-e "DOTNET_TEST_PROJECTS=Gov.News.Api.ClientTests" \
@@ -156,11 +105,9 @@ build-test() {
     '.' \
     "$BASE_IMAGE_NAME" \
 	'news-api-client'
-	
+
 	duration=$SECONDS
 	echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."	
-  # change back to previous directory
-  popd
 }
 
 buildImages() {
@@ -305,12 +252,9 @@ build)
   _startupParams=$(getStartupParams $@)
   configureEnvironment $@
   case "$@" in
-  api)
-    build-api
+  "test")
+    build-test
 	;;
-  web)
-    build-web
-    ;;  
   *)	
     buildImages
     ;;
