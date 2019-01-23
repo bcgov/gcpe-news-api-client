@@ -3,7 +3,7 @@
 # S2I Assemble Script
 # For the BC Government GCPE News WebApp project
 # This script is based on the S2I assemble script for dotnet 2, with the following extra features:
-#
+#  
 # 1. A Sonarqube scan can be done on the source
 # 2. A Snyk scan can be done on the source
 # 3. Dotnet tests can be done
@@ -85,7 +85,7 @@ fi
 # Override assembly name
 if [ -n "$DOTNET_ASSEMBLY_NAME" ]; then
   APP_DLL_NAME="${DOTNET_ASSEMBLY_NAME}.dll"
-fi
+fi 
 
 # Build nuget sources list for when doing the restore
 RESTORE_OPTIONS="--disable-parallel"
@@ -94,6 +94,8 @@ for SOURCE in $DOTNET_RESTORE_SOURCES; do
 done
 
 if [ -n "$DOTNET_PRETEST_BUILD" ]; then
+
+   echo "---> Running pre-test build..."
 
 	dotnet publish "$DOTNET_STARTUP_PROJECT" -f "$DOTNET_FRAMEWORK" -c "$DOTNET_CONFIGURATION" \
 		   --self-contained false /p:PublishWithAspNetCoreTargetManifest=$DOTNET_ASPNET_STORE -o "$DOTNET_APP_PATH"
