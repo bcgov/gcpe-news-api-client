@@ -150,7 +150,7 @@ build-test() {
   # temporarily change directory to the hub API project - as we don't want to use S2I scripts for the angular front end.
   ${S2I_EXE} build \
     -e "DOTNET_STARTUP_PROJECT=Gov.News.Api.Client" \
-	-e "DOTNET_STARTUP_PROJECT=Gov.News.Api.ClientTests" \
+	-e "DOTNET_TEST_PROJECTS=Gov.News.Api.ClientTests" \
 	-e "DOTNET_TEST_ONLY=true" \
 	-e "DOTNET_PRETEST_BUILD=true" \
     '.' \
