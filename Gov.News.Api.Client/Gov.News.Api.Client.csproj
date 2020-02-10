@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Gcpe.News.Api.Client</RootNamespace>
     <Version>1.0.85</Version>
     <Authors>GeorgeWalker,CraigShutko,Bruno Calvignac</Authors>
