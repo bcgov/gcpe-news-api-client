@@ -1,5 +1,5 @@
 ﻿{
-    "openapi": "3.0.1",
+    "swagger": "2.0",
     "info": {
       "title": "BC Gov News API Service 1.0",
       "description": "News API",
@@ -17,45 +17,32 @@
           ],
           "summary": "Get a Facebook post based on a Uri",
           "operationId": "FacebookPosts_GetByUri",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "uri",
               "in": "query",
+              "name": "uri",
               "description": "",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/FacebookPost"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/FacebookPost"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/FacebookPost"
-                  }
-                }
+              "schema": {
+                "$ref": "#/definitions/FacebookPost"
               }
             }
           }
@@ -68,36 +55,25 @@
           ],
           "summary": "Returns the top level content for the home page",
           "operationId": "Home_Get",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Home"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Home"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Home"
-                  }
-                }
+              "schema": {
+                "$ref": "#/definitions/Home"
               }
             }
           }
@@ -110,44 +86,27 @@
           ],
           "summary": "Get all ministries",
           "operationId": "Ministries_GetAll",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Ministry"
-                    }
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Ministry"
-                    }
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Ministry"
-                    }
-                  }
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Ministry"
                 }
               }
             }
@@ -161,45 +120,32 @@
           ],
           "summary": "Get the Ministry associated with the ministry key",
           "operationId": "Ministries_GetOne",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "key",
               "in": "path",
+              "name": "key",
               "description": "",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Ministry"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Ministry"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Ministry"
-                  }
-                }
+              "schema": {
+                "$ref": "#/definitions/Ministry"
               }
             }
           }
@@ -212,45 +158,32 @@
           ],
           "summary": "Get the Minister associated with the ministry key",
           "operationId": "Ministries_GetMinister",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "key",
               "in": "path",
+              "name": "key",
               "description": "",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Minister"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Minister"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Minister"
-                  }
-                }
+              "schema": {
+                "$ref": "#/definitions/Minister"
               }
             }
           }
@@ -263,44 +196,27 @@
           ],
           "summary": "Get all newsletters",
           "operationId": "Newsletters_GetAll",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Newsletter"
-                    }
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Newsletter"
-                    }
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Newsletter"
-                    }
-                  }
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Newsletter"
                 }
               }
             }
@@ -314,44 +230,31 @@
           ],
           "summary": "Get a specific newsletter",
           "operationId": "Newsletters_GetOne",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "newsletterKey",
               "in": "path",
+              "name": "newsletterKey",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Newsletter"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Newsletter"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Newsletter"
-                  }
-                }
+              "schema": {
+                "$ref": "#/definitions/Newsletter"
               }
             }
           }
@@ -364,54 +267,39 @@
           ],
           "summary": "Returns a specific edition of a newsletter",
           "operationId": "Newsletters_GetEdition",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
+              "in": "path",
               "name": "newsletterKey",
-              "in": "path",
               "description": "",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
+              "in": "path",
               "name": "editionKey",
-              "in": "path",
               "description": "",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Edition"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Edition"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Edition"
-                  }
-                }
+              "schema": {
+                "$ref": "#/definitions/Edition"
               }
             }
           }
@@ -424,63 +312,46 @@
           ],
           "summary": "Get an article belonging to a Newsletter edition",
           "operationId": "Newsletters_GetArticle",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
+              "in": "path",
               "name": "newsletterKey",
-              "in": "path",
               "description": "",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
+              "in": "path",
               "name": "editionKey",
-              "in": "path",
               "description": "",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
+              "in": "path",
               "name": "articleKey",
-              "in": "path",
               "description": "",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Article"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Article"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Article"
-                  }
-                }
+              "schema": {
+                "$ref": "#/definitions/Article"
               }
             }
           }
@@ -493,45 +364,32 @@
           ],
           "summary": "Get the image object reference by of a Newsletter Edition associated with the image guid",
           "operationId": "Newsletters_GetImage",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "guid",
               "in": "path",
+              "name": "guid",
               "description": "",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/EditionImage"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/EditionImage"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/EditionImage"
-                  }
-                }
+              "schema": {
+                "$ref": "#/definitions/EditionImage"
               }
             }
           }
@@ -544,45 +402,32 @@
           ],
           "summary": "Get the post associated with the key",
           "operationId": "Posts_GetOne",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "key",
               "in": "path",
+              "name": "key",
               "description": "",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Post"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Post"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Post"
-                  }
-                }
+              "schema": {
+                "$ref": "#/definitions/Post"
               }
             }
           }
@@ -595,73 +440,43 @@
           ],
           "summary": "Get the posts associated with the keys in the list passed in.",
           "operationId": "Posts_Get",
+          "consumes": [
+            "application/json",
+            "text/json",
+            "application/*+json"
+          ],
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
+              "type": "string",
+              "default": ""
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "description": "",
               "schema": {
-                "type": "string",
-                "default": ""
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           ],
-          "requestBody": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          },
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Post"
-                    }
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Post"
-                    }
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Post"
-                    }
-                  }
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Post"
                 }
               }
             }
@@ -675,91 +490,64 @@
           ],
           "summary": "Get the latest posts of postKind for the specified index (default or category)",
           "operationId": "Posts_GetLatest",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "indexKind",
               "in": "path",
+              "name": "indexKind",
               "description": "home or one of categories",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
-              "name": "indexKey",
               "in": "path",
+              "name": "indexKey",
               "description": "default or one key of the categories (ministries, sectors, services, tags, themes)",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
+              "in": "query",
               "name": "postKind",
-              "in": "query",
               "description": "One of: releases, stories, factsheets, updates or default (releases+stories except top/feature for categories)",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             },
             {
+              "in": "query",
               "name": "count",
-              "in": "query",
               "description": "number of posts to return",
-              "schema": {
-                "type": "integer",
-                "format": "int32",
-                "default": 50
-              }
+              "type": "integer",
+              "format": "int32",
+              "default": 50
             },
             {
+              "in": "query",
               "name": "skip",
-              "in": "query",
               "description": "number of posts to skip",
-              "schema": {
-                "type": "integer",
-                "format": "int32",
-                "default": 0
-              }
+              "type": "integer",
+              "format": "int32",
+              "default": 0
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Post"
-                    }
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Post"
-                    }
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Post"
-                    }
-                  }
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Post"
                 }
               }
             }
@@ -773,91 +561,64 @@
           ],
           "summary": "Get all keys for the specified index (newsroom or category)",
           "operationId": "Posts_GetAllKeys",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "indexKind",
               "in": "path",
+              "name": "indexKind",
               "description": "home or one of categories",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
-              "name": "indexKey",
               "in": "path",
+              "name": "indexKey",
               "description": "default or one key of the categories (ministries, sectors, services, tags, themes)",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
+              "in": "query",
               "name": "postKind",
-              "in": "query",
               "description": "One of: releases, stories, factsheets, updates or default (releases+stories+factsheets)",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             },
             {
+              "in": "query",
               "name": "count",
-              "in": "query",
               "description": "number of posts to return",
-              "schema": {
-                "type": "integer",
-                "format": "int32",
-                "default": ""
-              }
+              "type": "integer",
+              "format": "int32",
+              "default": ""
             },
             {
+              "in": "query",
               "name": "skip",
-              "in": "query",
               "description": "number of posts to skip",
-              "schema": {
-                "type": "integer",
-                "format": "int32",
-                "default": 0
-              }
+              "type": "integer",
+              "format": "int32",
+              "default": 0
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/KeyValuePair2"
-                    }
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/KeyValuePair2"
-                    }
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/KeyValuePair2"
-                    }
-                  }
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/KeyValuePair2"
                 }
               }
             }
@@ -871,45 +632,32 @@
           ],
           "summary": "Get the post key associated with the reference.",
           "operationId": "Posts_GetKeyFromReference",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "reference",
               "in": "path",
+              "name": "reference",
               "description": "",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/KeyValuePair2"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/KeyValuePair2"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/KeyValuePair2"
-                  }
-                }
+              "schema": {
+                "$ref": "#/definitions/KeyValuePair2"
               }
             }
           }
@@ -922,48 +670,33 @@
           ],
           "summary": "Gets the latest Social Media post for the social media type passed in.",
           "operationId": "Posts_GetLatestMediaUri",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "mediaType",
               "in": "path",
+              "name": "mediaType",
               "description": "",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "type": "string",
-                    "format": "uri"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "type": "string",
-                    "format": "uri"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "type": "string",
-                    "format": "uri"
-                  }
-                }
+              "schema": {
+                "format": "uri",
+                "type": "string"
               }
             }
           }
@@ -976,44 +709,27 @@
           ],
           "summary": "Get all resource links",
           "operationId": "ResourceLinks_GetAll",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ResourceLink"
-                    }
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ResourceLink"
-                    }
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ResourceLink"
-                    }
-                  }
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/ResourceLink"
                 }
               }
             }
@@ -1027,44 +743,27 @@
           ],
           "summary": "Get all Sectors",
           "operationId": "Sectors_GetAll",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Sector"
-                    }
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Sector"
-                    }
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Sector"
-                    }
-                  }
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Sector"
                 }
               }
             }
@@ -1078,45 +777,32 @@
           ],
           "summary": "Get the sector associated with the key",
           "operationId": "Sectors_GetOne",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "key",
               "in": "path",
+              "name": "key",
               "description": "",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Sector"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Sector"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Sector"
-                  }
-                }
+              "schema": {
+                "$ref": "#/definitions/Sector"
               }
             }
           }
@@ -1129,45 +815,32 @@
           ],
           "summary": "Get the slide associated to the id",
           "operationId": "Slides_GetOne",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "id",
               "in": "path",
+              "name": "id",
               "description": "",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Slide"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Slide"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Slide"
-                  }
-                }
+              "schema": {
+                "$ref": "#/definitions/Slide"
               }
             }
           }
@@ -1180,44 +853,27 @@
           ],
           "summary": "Get all Slides",
           "operationId": "Slides_GetAll",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Slide"
-                    }
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Slide"
-                    }
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Slide"
-                    }
-                  }
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Slide"
                 }
               }
             }
@@ -1231,53 +887,34 @@
           ],
           "summary": "The items of a particular category (e.g ministries, sectors, tags, services, newsletters, emergency) available for subscription.",
           "operationId": "Subscribe_SubscriptionItems",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "categoryKey",
               "in": "path",
+              "name": "categoryKey",
               "description": "",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/KeyValuePair2"
-                    }
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/KeyValuePair2"
-                    }
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/KeyValuePair2"
-                    }
-                  }
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/KeyValuePair2"
                 }
               }
             }
@@ -1291,37 +928,28 @@
           ],
           "summary": "Create a NewsOnDemand subscription for the provided subscriberInfo.",
           "operationId": "Subscribe_CreateNewsOnDemandEmailSubscriptionWithPreferences",
+          "consumes": [
+            "application/json",
+            "text/json",
+            "application/*+json"
+          ],
           "parameters": [
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
+              "type": "string",
+              "default": ""
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "description": "",
               "schema": {
-                "type": "string",
-                "default": ""
+                "$ref": "#/definitions/SubscriberInfo"
               }
             }
           ],
-          "requestBody": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SubscriberInfo"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SubscriberInfo"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SubscriberInfo"
-                }
-              }
-            }
-          },
           "responses": {
             "200": {
               "description": "Success"
@@ -1336,46 +964,33 @@
           ],
           "summary": "Confirm that the subscription with tokenGuid has been created",
           "operationId": "Subscribe_ConfirmUpdateCreateSubscription",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "tokenGuid",
               "in": "path",
+              "name": "tokenGuid",
               "description": "",
               "required": true,
-              "schema": {
-                "type": "string",
-                "format": "uuid"
-              }
+              "type": "string",
+              "format": "uuid"
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/SubscriberInfo"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/SubscriberInfo"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/SubscriberInfo"
-                  }
-                }
+              "schema": {
+                "$ref": "#/definitions/SubscriberInfo"
               }
             }
           }
@@ -1388,47 +1003,36 @@
           ],
           "summary": "Update an existing NOD subscription",
           "operationId": "Subscribe_UpdateNewsOnDemandEmailSubscriptionWithPreferences",
+          "consumes": [
+            "application/json",
+            "text/json",
+            "application/*+json"
+          ],
           "parameters": [
             {
-              "name": "tokenGuid",
               "in": "path",
+              "name": "tokenGuid",
               "description": "",
               "required": true,
-              "schema": {
-                "type": "string",
-                "format": "uuid"
-              }
+              "type": "string",
+              "format": "uuid"
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
+              "type": "string",
+              "default": ""
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "description": "",
               "schema": {
-                "type": "string",
-                "default": ""
+                "$ref": "#/definitions/SubscriberInfo"
               }
             }
           ],
-          "requestBody": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SubscriberInfo"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SubscriberInfo"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SubscriberInfo"
-                }
-              }
-            }
-          },
           "responses": {
             "200": {
               "description": "Success"
@@ -1445,22 +1049,18 @@
           "operationId": "Subscribe_ManageNewsOnDemandEmailSubscription",
           "parameters": [
             {
-              "name": "emailAddress",
               "in": "path",
+              "name": "emailAddress",
               "description": "",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
@@ -1477,46 +1077,33 @@
           ],
           "summary": "Check an email activation for a specific token",
           "operationId": "Subscribe_CheckEmailActivationToken",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "tokenGuid",
               "in": "path",
+              "name": "tokenGuid",
               "description": "",
               "required": true,
-              "schema": {
-                "type": "string",
-                "format": "uuid"
-              }
+              "type": "string",
+              "format": "uuid"
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "type": "boolean"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "type": "boolean"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "type": "boolean"
-                  }
-                }
+              "schema": {
+                "type": "boolean"
               }
             }
           }
@@ -1529,46 +1116,33 @@
           ],
           "summary": "Unsubscribe the user identified by the passed tokenGuid.",
           "operationId": "Subscribe_UnsubscribeSubscriber",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "tokenGuid",
               "in": "path",
+              "name": "tokenGuid",
               "description": "",
               "required": true,
-              "schema": {
-                "type": "string",
-                "format": "uuid"
-              }
+              "type": "string",
+              "format": "uuid"
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "type": "boolean"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "type": "boolean"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "type": "boolean"
-                  }
-                }
+              "schema": {
+                "type": "boolean"
               }
             }
           }
@@ -1581,44 +1155,27 @@
           ],
           "summary": "Get all Tags",
           "operationId": "Tags_GetAll",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Tag"
-                    }
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Tag"
-                    }
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Tag"
-                    }
-                  }
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Tag"
                 }
               }
             }
@@ -1632,45 +1189,32 @@
           ],
           "summary": "Get the Tag associated with the key",
           "operationId": "Tags_GetOne",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "key",
               "in": "path",
+              "name": "key",
               "description": "",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Tag"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Tag"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Tag"
-                  }
-                }
+              "schema": {
+                "$ref": "#/definitions/Tag"
               }
             }
           }
@@ -1683,44 +1227,27 @@
           ],
           "summary": "Get all Themes",
           "operationId": "Themes_GetAll",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Theme"
-                    }
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Theme"
-                    }
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Theme"
-                    }
-                  }
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Theme"
                 }
               }
             }
@@ -1734,1173 +1261,1009 @@
           ],
           "summary": "Get the Theme associated with the key",
           "operationId": "Themes_GetOne",
+          "produces": [
+            "text/plain",
+            "application/json",
+            "text/json"
+          ],
           "parameters": [
             {
-              "name": "key",
               "in": "path",
+              "name": "key",
               "description": "",
               "required": true,
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             },
             {
-              "name": "api-version",
               "in": "query",
+              "name": "api-version",
               "description": "The requested API version",
-              "schema": {
-                "type": "string",
-                "default": ""
-              }
+              "type": "string",
+              "default": ""
             }
           ],
           "responses": {
             "200": {
               "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Theme"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Theme"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Theme"
-                  }
-                }
+              "schema": {
+                "$ref": "#/definitions/Theme"
               }
             }
           }
         }
       }
     },
-    "components": {
-      "schemas": {
-        "UriHostNameType": {
-          "enum": [
-            0,
-            1,
-            2,
-            3,
-            4
-          ],
-          "type": "integer",
-          "format": "int32",
-          "x-ms-enum": {
-            "name": "UriHostNameType",
-            "modelAsString": true
+    "definitions": {
+      "UriHostNameType": {
+        "format": "int32",
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "x-ms-enum": {
+          "name": "UriHostNameType",
+          "modelAsString": true
+        }
+      },
+      "DayOfWeek": {
+        "format": "int32",
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "type": "integer",
+        "x-ms-enum": {
+          "name": "DayOfWeek",
+          "modelAsString": true
+        }
+      },
+      "TimeSpan": {
+        "type": "object",
+        "properties": {
+          "ticks": {
+            "format": "int64",
+            "type": "integer",
+            "readOnly": true
+          },
+          "days": {
+            "format": "int32",
+            "type": "integer",
+            "readOnly": true
+          },
+          "hours": {
+            "format": "int32",
+            "type": "integer",
+            "readOnly": true
+          },
+          "milliseconds": {
+            "format": "int32",
+            "type": "integer",
+            "readOnly": true
+          },
+          "minutes": {
+            "format": "int32",
+            "type": "integer",
+            "readOnly": true
+          },
+          "seconds": {
+            "format": "int32",
+            "type": "integer",
+            "readOnly": true
+          },
+          "totalDays": {
+            "format": "double",
+            "type": "number",
+            "readOnly": true
+          },
+          "totalHours": {
+            "format": "double",
+            "type": "number",
+            "readOnly": true
+          },
+          "totalMilliseconds": {
+            "format": "double",
+            "type": "number",
+            "readOnly": true
+          },
+          "totalMinutes": {
+            "format": "double",
+            "type": "number",
+            "readOnly": true
+          },
+          "totalSeconds": {
+            "format": "double",
+            "type": "number",
+            "readOnly": true
           }
-        },
-        "DayOfWeek": {
-          "enum": [
-            0,
-            1,
-            2,
-            3,
-            4,
-            5,
-            6
-          ],
-          "type": "integer",
-          "format": "int32",
-          "x-ms-enum": {
-            "name": "DayOfWeek",
-            "modelAsString": true
+        }
+      },
+      "DataModel": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "readOnly": true
+          },
+          "memoryCachable": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "timestamp": {
+            "format": "date-time",
+            "type": "string",
+            "readOnly": true
           }
-        },
-        "TimeSpan": {
-          "type": "object",
-          "properties": {
-            "ticks": {
-              "type": "integer",
-              "format": "int64",
-              "readOnly": true
-            },
-            "days": {
-              "type": "integer",
-              "format": "int32",
-              "readOnly": true
-            },
-            "hours": {
-              "type": "integer",
-              "format": "int32",
-              "readOnly": true
-            },
-            "milliseconds": {
-              "type": "integer",
-              "format": "int32",
-              "readOnly": true
-            },
-            "minutes": {
-              "type": "integer",
-              "format": "int32",
-              "readOnly": true
-            },
-            "seconds": {
-              "type": "integer",
-              "format": "int32",
-              "readOnly": true
-            },
-            "totalDays": {
-              "type": "number",
-              "format": "double",
-              "readOnly": true
-            },
-            "totalHours": {
-              "type": "number",
-              "format": "double",
-              "readOnly": true
-            },
-            "totalMilliseconds": {
-              "type": "number",
-              "format": "double",
-              "readOnly": true
-            },
-            "totalMinutes": {
-              "type": "number",
-              "format": "double",
-              "readOnly": true
-            },
-            "totalSeconds": {
-              "type": "number",
-              "format": "double",
-              "readOnly": true
-            }
+        }
+      },
+      "FacebookPost": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/DataModel"
           },
-          "additionalProperties": false
-        },
-        "DataModel": {
-          "type": "object",
-          "properties": {
-            "key": {
-              "type": "string",
-              "nullable": true,
-              "readOnly": true
-            },
-            "memoryCachable": {
-              "type": "boolean",
-              "readOnly": true
-            },
-            "timestamp": {
-              "type": "string",
-              "format": "date-time",
-              "readOnly": true
-            }
-          },
-          "additionalProperties": false
-        },
-        "FacebookPost": {
-          "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/DataModel"
-            },
-            {
-              "type": "object",
-              "properties": {
-                "poster": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "posterLogo": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "posterSubtitle": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "posterLikes": {
-                  "type": "integer",
-                  "format": "int32",
-                  "readOnly": true
-                },
-                "posterUrl": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "content": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "postLikes": {
-                  "type": "integer",
-                  "format": "int32",
-                  "readOnly": true
-                },
-                "postComments": {
-                  "type": "integer",
-                  "format": "int32",
-                  "readOnly": true
-                },
-                "postShares": {
-                  "type": "integer",
-                  "format": "int32",
-                  "readOnly": true
-                },
-                "facebookObjectId": {
-                  "type": "integer",
-                  "format": "int32",
-                  "readOnly": true
-                },
-                "type": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "pictureUri": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "memoryCachable": {
-                  "type": "boolean",
-                  "readOnly": true
-                }
-              }
-            }
-          ],
-          "additionalProperties": false
-        },
-        "DataIndex": {
-          "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/DataModel"
-            },
-            {
-              "type": "object",
-              "properties": {
-                "kind": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "topPostKey": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "featurePostKey": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "memoryCachable": {
-                  "type": "boolean",
-                  "readOnly": true
-                }
-              }
-            }
-          ],
-          "additionalProperties": false
-        },
-        "Home": {
-          "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/DataIndex"
-            },
-            {
-              "type": "object",
-              "properties": {
-                "liveWebcastFlashMediaManifestUrl": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "liveWebcastM3uPlaylist": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "granville": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "topPostKey": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "featurePostKey": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "memoryCachable": {
-                  "type": "boolean",
-                  "readOnly": true
-                }
-              }
-            }
-          ],
-          "additionalProperties": false
-        },
-        "ResourceLink": {
-          "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/DataModel"
-            },
-            {
-              "type": "object",
-              "properties": {
-                "memoryCachable": {
-                  "type": "boolean",
-                  "readOnly": true
-                },
-                "uri": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true
-                }
-              }
-            }
-          ],
-          "additionalProperties": false
-        },
-        "Contact": {
-          "type": "object",
-          "properties": {
-            "fullName": {
-              "type": "string",
-              "nullable": true
-            },
-            "phoneNumber": {
-              "type": "string",
-              "nullable": true
-            },
-            "mobileNumber": {
-              "type": "string",
-              "nullable": true
-            },
-            "emailAddress": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          "additionalProperties": false
-        },
-        "Category": {
-          "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/DataIndex"
-            },
-            {
-              "type": "object",
-              "properties": {
-                "twitterFeedUsername": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "flickrUri": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "youtubeUri": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "audioUri": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "isActive": {
-                  "type": "boolean",
-                  "readOnly": true
-                },
-                "topPostKey": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "featurePostKey": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "memoryCachable": {
-                  "type": "boolean",
-                  "readOnly": true
-                }
-              }
-            }
-          ],
-          "additionalProperties": false
-        },
-        "Ministry": {
-          "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/Category"
-            },
-            {
-              "type": "object",
-              "properties": {
-                "childMinistryKey": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "parentMinistryKey": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "ministryUrl": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true
-                },
-                "displayAdditionalName": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "topicLinks": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ResourceLink"
-                  },
-                  "nullable": true
-                },
-                "serviceLinks": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ResourceLink"
-                  },
-                  "nullable": true
-                },
-                "newsletterLinks": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ResourceLink"
-                  },
-                  "nullable": true
-                },
-                "ministerName": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "contactUser": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/Contact"
-                    }
-                  ],
-                  "nullable": true
-                },
-                "secondContactUser": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/Contact"
-                    }
-                  ],
-                  "nullable": true
-                },
-                "weekendContactNumber": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "twitterFeedUsername": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "flickrUri": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "youtubeUri": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "audioUri": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "isActive": {
-                  "type": "boolean",
-                  "readOnly": true
-                },
-                "topPostKey": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "featurePostKey": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "memoryCachable": {
-                  "type": "boolean",
-                  "readOnly": true
-                }
-              }
-            }
-          ],
-          "additionalProperties": false
-        },
-        "Minister": {
-          "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/DataModel"
-            },
-            {
-              "type": "object",
-              "properties": {
-                "headline": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "summary": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "details": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "emailHtml": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "photo": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "post": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "memoryCachable": {
-                  "type": "boolean",
-                  "readOnly": true
-                }
-              }
-            }
-          ],
-          "additionalProperties": false
-        },
-        "KeyValuePair2": {
-          "type": "object",
-          "properties": {
-            "key": {
-              "type": "string",
-              "nullable": true,
-              "readOnly": true
-            },
-            "value": {
-              "type": "string",
-              "nullable": true,
-              "readOnly": true
-            }
-          },
-          "additionalProperties": false
-        },
-        "Newsletter": {
-          "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/DataModel"
-            },
-            {
-              "type": "object",
-              "properties": {
-                "memoryCachable": {
-                  "type": "boolean",
-                  "readOnly": true
-                },
-                "name": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "ministryName": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "description": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "editions": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/KeyValuePair2"
-                  },
-                  "nullable": true
-                }
-              }
-            }
-          ],
-          "additionalProperties": false
-        },
-        "Edition": {
-          "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/DataModel"
-            },
-            {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "htmlBody": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "memoryCachable": {
-                  "type": "boolean",
-                  "readOnly": true
-                }
-              }
-            }
-          ],
-          "additionalProperties": false
-        },
-        "Article": {
-          "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/DataModel"
-            },
-            {
-              "type": "object",
-              "properties": {
-                "memoryCachable": {
-                  "type": "boolean",
-                  "readOnly": true
-                },
-                "editionName": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "htmlBody": {
-                  "type": "string",
-                  "nullable": true
-                }
-              }
-            }
-          ],
-          "additionalProperties": false
-        },
-        "EditionImage": {
-          "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/DataModel"
-            },
-            {
-              "type": "object",
-              "properties": {
-                "memoryCachable": {
-                  "type": "boolean",
-                  "readOnly": true
-                },
-                "fileName": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "imageBytes": {
-                  "type": "string",
-                  "format": "byte",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "imageType": {
-                  "type": "string",
-                  "nullable": true
-                }
-              }
-            }
-          ],
-          "additionalProperties": false
-        },
-        "DocumentContact": {
-          "type": "object",
-          "properties": {
-            "title": {
-              "type": "string",
-              "nullable": true
-            },
-            "details": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          "additionalProperties": false
-        },
-        "Document": {
-          "type": "object",
-          "properties": {
-            "pageTitle": {
-              "type": "string",
-              "nullable": true,
-              "readOnly": true
-            },
-            "languageId": {
-              "type": "integer",
-              "format": "int32",
-              "readOnly": true
-            },
-            "headline": {
-              "type": "string",
-              "nullable": true,
-              "readOnly": true
-            },
-            "subheadline": {
-              "type": "string",
-              "nullable": true,
-              "readOnly": true
-            },
-            "detailsHtml": {
-              "type": "string",
-              "nullable": true,
-              "readOnly": true
-            },
-            "byline": {
-              "type": "string",
-              "nullable": true,
-              "readOnly": true
-            },
-            "contacts": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/DocumentContact"
+          {
+            "type": "object",
+            "properties": {
+              "poster": {
+                "type": "string",
+                "readOnly": true
               },
-              "nullable": true
+              "posterLogo": {
+                "format": "uri",
+                "type": "string",
+                "readOnly": true
+              },
+              "posterSubtitle": {
+                "type": "string",
+                "readOnly": true
+              },
+              "posterLikes": {
+                "format": "int32",
+                "type": "integer",
+                "readOnly": true
+              },
+              "posterUrl": {
+                "type": "string",
+                "readOnly": true
+              },
+              "content": {
+                "type": "string",
+                "readOnly": true
+              },
+              "postLikes": {
+                "format": "int32",
+                "type": "integer",
+                "readOnly": true
+              },
+              "postComments": {
+                "format": "int32",
+                "type": "integer",
+                "readOnly": true
+              },
+              "postShares": {
+                "format": "int32",
+                "type": "integer",
+                "readOnly": true
+              },
+              "facebookObjectId": {
+                "format": "int32",
+                "type": "integer",
+                "readOnly": true
+              },
+              "type": {
+                "type": "string",
+                "readOnly": true
+              },
+              "pictureUri": {
+                "format": "uri",
+                "type": "string",
+                "readOnly": true
+              },
+              "memoryCachable": {
+                "type": "boolean",
+                "readOnly": true
+              }
             }
+          }
+        ]
+      },
+      "DataIndex": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/DataModel"
           },
-          "additionalProperties": false
-        },
-        "Asset": {
-          "type": "object",
-          "properties": {
-            "key": {
-              "type": "string",
-              "nullable": true
-            },
-            "label": {
-              "type": "string",
-              "nullable": true
-            },
-            "length": {
-              "type": "integer",
-              "format": "int64"
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string"
+              },
+              "topPostKey": {
+                "type": "string"
+              },
+              "featurePostKey": {
+                "type": "string"
+              },
+              "memoryCachable": {
+                "type": "boolean",
+                "readOnly": true
+              }
             }
+          }
+        ]
+      },
+      "Home": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/DataIndex"
           },
-          "additionalProperties": false
-        },
-        "Post": {
-          "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/DataModel"
-            },
-            {
-              "type": "object",
-              "properties": {
-                "kind": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "atomId": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "summary": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "socialMediaSummary": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "socialMediaHeadline": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "keywords": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "publishDate": {
-                  "type": "string",
-                  "format": "date-time",
-                  "readOnly": true
-                },
-                "leadMinistryKey": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "hasMediaAssets": {
-                  "type": "boolean"
-                },
-                "isNewsOnDemand": {
-                  "type": "boolean"
-                },
-                "assetUrl": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "location": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "documents": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Document"
-                  },
-                  "nullable": true
-                },
-                "reference": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "redirectUri": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true
-                },
-                "ministryKeys": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  },
-                  "nullable": true
-                },
-                "sectorKeys": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  },
-                  "nullable": true
-                },
-                "tagKeys": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  },
-                  "nullable": true
-                },
-                "themeKeys": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  },
-                  "nullable": true
-                },
-                "facebookPictureUri": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true
-                },
-                "azureAssets": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Asset"
-                  },
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "memoryCachable": {
-                  "type": "boolean",
-                  "readOnly": true
+          {
+            "type": "object",
+            "properties": {
+              "liveWebcastFlashMediaManifestUrl": {
+                "type": "string"
+              },
+              "liveWebcastM3uPlaylist": {
+                "type": "string"
+              },
+              "granville": {
+                "type": "string"
+              },
+              "topPostKey": {
+                "type": "string"
+              },
+              "featurePostKey": {
+                "type": "string"
+              },
+              "memoryCachable": {
+                "type": "boolean",
+                "readOnly": true
+              }
+            }
+          }
+        ]
+      },
+      "ResourceLink": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/DataModel"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "memoryCachable": {
+                "type": "boolean",
+                "readOnly": true
+              },
+              "uri": {
+                "format": "uri",
+                "type": "string"
+              }
+            }
+          }
+        ]
+      },
+      "Contact": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "mobileNumber": {
+            "type": "string"
+          },
+          "emailAddress": {
+            "type": "string"
+          }
+        }
+      },
+      "Category": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/DataIndex"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "twitterFeedUsername": {
+                "type": "string",
+                "readOnly": true
+              },
+              "flickrUri": {
+                "format": "uri",
+                "type": "string",
+                "readOnly": true
+              },
+              "youtubeUri": {
+                "format": "uri",
+                "type": "string",
+                "readOnly": true
+              },
+              "audioUri": {
+                "format": "uri",
+                "type": "string",
+                "readOnly": true
+              },
+              "isActive": {
+                "type": "boolean",
+                "readOnly": true
+              },
+              "topPostKey": {
+                "type": "string"
+              },
+              "featurePostKey": {
+                "type": "string"
+              },
+              "memoryCachable": {
+                "type": "boolean",
+                "readOnly": true
+              }
+            }
+          }
+        ]
+      },
+      "Ministry": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/Category"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "childMinistryKey": {
+                "type": "string"
+              },
+              "parentMinistryKey": {
+                "type": "string"
+              },
+              "ministryUrl": {
+                "format": "uri",
+                "type": "string"
+              },
+              "displayAdditionalName": {
+                "type": "string"
+              },
+              "topicLinks": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/ResourceLink"
+                }
+              },
+              "serviceLinks": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/ResourceLink"
+                }
+              },
+              "newsletterLinks": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/ResourceLink"
+                }
+              },
+              "ministerName": {
+                "type": "string"
+              },
+              "contactUser": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Contact"
+                  }
+                ]
+              },
+              "secondContactUser": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Contact"
+                  }
+                ]
+              },
+              "weekendContactNumber": {
+                "type": "string"
+              },
+              "twitterFeedUsername": {
+                "type": "string",
+                "readOnly": true
+              },
+              "flickrUri": {
+                "format": "uri",
+                "type": "string",
+                "readOnly": true
+              },
+              "youtubeUri": {
+                "format": "uri",
+                "type": "string",
+                "readOnly": true
+              },
+              "audioUri": {
+                "format": "uri",
+                "type": "string",
+                "readOnly": true
+              },
+              "isActive": {
+                "type": "boolean",
+                "readOnly": true
+              },
+              "topPostKey": {
+                "type": "string"
+              },
+              "featurePostKey": {
+                "type": "string"
+              },
+              "memoryCachable": {
+                "type": "boolean",
+                "readOnly": true
+              }
+            }
+          }
+        ]
+      },
+      "Minister": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/DataModel"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "headline": {
+                "type": "string",
+                "readOnly": true
+              },
+              "summary": {
+                "type": "string",
+                "readOnly": true
+              },
+              "details": {
+                "type": "string",
+                "readOnly": true
+              },
+              "emailHtml": {
+                "type": "string",
+                "readOnly": true
+              },
+              "photo": {
+                "type": "string",
+                "readOnly": true
+              },
+              "post": {
+                "type": "string",
+                "readOnly": true
+              },
+              "memoryCachable": {
+                "type": "boolean",
+                "readOnly": true
+              }
+            }
+          }
+        ]
+      },
+      "KeyValuePair2": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "readOnly": true
+          },
+          "value": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      },
+      "Newsletter": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/DataModel"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "memoryCachable": {
+                "type": "boolean",
+                "readOnly": true
+              },
+              "name": {
+                "type": "string"
+              },
+              "ministryName": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "editions": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/KeyValuePair2"
                 }
               }
             }
-          ],
-          "additionalProperties": false
-        },
-        "Sector": {
-          "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/Category"
-            },
-            {
-              "type": "object",
-              "properties": {
-                "twitterFeedUsername": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "flickrUri": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "youtubeUri": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "audioUri": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "isActive": {
-                  "type": "boolean",
-                  "readOnly": true
-                },
-                "topPostKey": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "featurePostKey": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "memoryCachable": {
-                  "type": "boolean",
-                  "readOnly": true
-                }
+          }
+        ]
+      },
+      "Edition": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/DataModel"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "htmlBody": {
+                "type": "string"
+              },
+              "memoryCachable": {
+                "type": "boolean",
+                "readOnly": true
               }
             }
-          ],
-          "additionalProperties": false
-        },
-        "Slide": {
-          "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/DataModel"
-            },
-            {
-              "type": "object",
-              "properties": {
-                "headline": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "summary": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "actionLabel": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "actionUri": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true
-                },
-                "image": {
-                  "type": "string",
-                  "format": "byte",
-                  "nullable": true
-                },
-                "facebookPostUri": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true
-                },
-                "justify": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "imageType": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "memoryCachable": {
-                  "type": "boolean",
-                  "readOnly": true
-                }
+          }
+        ]
+      },
+      "Article": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/DataModel"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "memoryCachable": {
+                "type": "boolean",
+                "readOnly": true
+              },
+              "editionName": {
+                "type": "string"
+              },
+              "htmlBody": {
+                "type": "string"
               }
             }
-          ],
-          "additionalProperties": false
-        },
-        "SubscriberInfo": {
-          "type": "object",
-          "properties": {
-            "emailAddress": {
-              "type": "string",
-              "nullable": true
-            },
-            "subscribedCategories": {
-              "type": "object",
-              "additionalProperties": {
+          }
+        ]
+      },
+      "EditionImage": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/DataModel"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "memoryCachable": {
+                "type": "boolean",
+                "readOnly": true
+              },
+              "fileName": {
+                "type": "string"
+              },
+              "imageBytes": {
+                "format": "byte",
+                "type": "string",
+                "readOnly": true
+              },
+              "imageType": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      },
+      "DocumentContact": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "details": {
+            "type": "string"
+          }
+        }
+      },
+      "Document": {
+        "type": "object",
+        "properties": {
+          "pageTitle": {
+            "type": "string",
+            "readOnly": true
+          },
+          "languageId": {
+            "format": "int32",
+            "type": "integer",
+            "readOnly": true
+          },
+          "headline": {
+            "type": "string",
+            "readOnly": true
+          },
+          "subheadline": {
+            "type": "string",
+            "readOnly": true
+          },
+          "detailsHtml": {
+            "type": "string",
+            "readOnly": true
+          },
+          "byline": {
+            "type": "string",
+            "readOnly": true
+          },
+          "contacts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/DocumentContact"
+            }
+          }
+        }
+      },
+      "Asset": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "length": {
+            "format": "int64",
+            "type": "integer"
+          }
+        }
+      },
+      "Post": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/DataModel"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "readOnly": true
+              },
+              "atomId": {
+                "type": "string",
+                "readOnly": true
+              },
+              "summary": {
+                "type": "string",
+                "readOnly": true
+              },
+              "socialMediaSummary": {
+                "type": "string",
+                "readOnly": true
+              },
+              "socialMediaHeadline": {
+                "type": "string",
+                "readOnly": true
+              },
+              "keywords": {
+                "type": "string",
+                "readOnly": true
+              },
+              "publishDate": {
+                "format": "date-time",
+                "type": "string",
+                "readOnly": true
+              },
+              "leadMinistryKey": {
+                "type": "string"
+              },
+              "hasMediaAssets": {
+                "type": "boolean"
+              },
+              "isNewsOnDemand": {
+                "type": "boolean"
+              },
+              "assetUrl": {
+                "type": "string"
+              },
+              "location": {
+                "type": "string"
+              },
+              "documents": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Document"
+                }
+              },
+              "reference": {
+                "type": "string"
+              },
+              "redirectUri": {
+                "format": "uri",
+                "type": "string"
+              },
+              "ministryKeys": {
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
               },
-              "nullable": true
-            },
-            "isAllNews": {
-              "type": "boolean",
-              "nullable": true
-            },
-            "isAsItHappens": {
-              "type": "boolean",
-              "nullable": true
-            },
-            "isDailyDigest": {
-              "type": "boolean",
-              "nullable": true
-            },
-            "isAdminRegistration": {
-              "type": "boolean",
-              "nullable": true
-            },
-            "notifyIfNewCategories": {
-              "type": "boolean",
-              "nullable": true
-            },
-            "expiredLinkOrUnverifiedEmail": {
-              "type": "boolean",
-              "nullable": true
+              "sectorKeys": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "tagKeys": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "themeKeys": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "facebookPictureUri": {
+                "format": "uri",
+                "type": "string"
+              },
+              "azureAssets": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Asset"
+                },
+                "readOnly": true
+              },
+              "memoryCachable": {
+                "type": "boolean",
+                "readOnly": true
+              }
+            }
+          }
+        ]
+      },
+      "Sector": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/Category"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "twitterFeedUsername": {
+                "type": "string",
+                "readOnly": true
+              },
+              "flickrUri": {
+                "format": "uri",
+                "type": "string",
+                "readOnly": true
+              },
+              "youtubeUri": {
+                "format": "uri",
+                "type": "string",
+                "readOnly": true
+              },
+              "audioUri": {
+                "format": "uri",
+                "type": "string",
+                "readOnly": true
+              },
+              "isActive": {
+                "type": "boolean",
+                "readOnly": true
+              },
+              "topPostKey": {
+                "type": "string"
+              },
+              "featurePostKey": {
+                "type": "string"
+              },
+              "memoryCachable": {
+                "type": "boolean",
+                "readOnly": true
+              }
+            }
+          }
+        ]
+      },
+      "Slide": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/DataModel"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "headline": {
+                "type": "string"
+              },
+              "summary": {
+                "type": "string"
+              },
+              "actionLabel": {
+                "type": "string"
+              },
+              "actionUri": {
+                "format": "uri",
+                "type": "string"
+              },
+              "image": {
+                "format": "byte",
+                "type": "string"
+              },
+              "facebookPostUri": {
+                "format": "uri",
+                "type": "string"
+              },
+              "justify": {
+                "type": "string",
+                "readOnly": true
+              },
+              "imageType": {
+                "type": "string",
+                "readOnly": true
+              },
+              "memoryCachable": {
+                "type": "boolean",
+                "readOnly": true
+              }
+            }
+          }
+        ]
+      },
+      "SubscriberInfo": {
+        "type": "object",
+        "properties": {
+          "emailAddress": {
+            "type": "string"
+          },
+          "subscribedCategories": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             }
           },
-          "additionalProperties": false
-        },
-        "Tag": {
-          "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/Category"
-            },
-            {
-              "type": "object",
-              "properties": {
-                "twitterFeedUsername": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "flickrUri": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "youtubeUri": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "audioUri": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "isActive": {
-                  "type": "boolean",
-                  "readOnly": true
-                },
-                "topPostKey": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "featurePostKey": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "memoryCachable": {
-                  "type": "boolean",
-                  "readOnly": true
-                }
-              }
-            }
-          ],
-          "additionalProperties": false
-        },
-        "Theme": {
-          "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/Category"
-            },
-            {
-              "type": "object",
-              "properties": {
-                "twitterFeedUsername": {
-                  "type": "string",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "flickrUri": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "youtubeUri": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "audioUri": {
-                  "type": "string",
-                  "format": "uri",
-                  "nullable": true,
-                  "readOnly": true
-                },
-                "isActive": {
-                  "type": "boolean",
-                  "readOnly": true
-                },
-                "topPostKey": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "featurePostKey": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "memoryCachable": {
-                  "type": "boolean",
-                  "readOnly": true
-                }
-              }
-            }
-          ],
-          "additionalProperties": false
+          "isAllNews": {
+            "type": "boolean"
+          },
+          "isAsItHappens": {
+            "type": "boolean"
+          },
+          "isDailyDigest": {
+            "type": "boolean"
+          },
+          "isAdminRegistration": {
+            "type": "boolean"
+          },
+          "notifyIfNewCategories": {
+            "type": "boolean"
+          },
+          "expiredLinkOrUnverifiedEmail": {
+            "type": "boolean"
+          }
         }
+      },
+      "Tag": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/Category"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "twitterFeedUsername": {
+                "type": "string",
+                "readOnly": true
+              },
+              "flickrUri": {
+                "format": "uri",
+                "type": "string",
+                "readOnly": true
+              },
+              "youtubeUri": {
+                "format": "uri",
+                "type": "string",
+                "readOnly": true
+              },
+              "audioUri": {
+                "format": "uri",
+                "type": "string",
+                "readOnly": true
+              },
+              "isActive": {
+                "type": "boolean",
+                "readOnly": true
+              },
+              "topPostKey": {
+                "type": "string"
+              },
+              "featurePostKey": {
+                "type": "string"
+              },
+              "memoryCachable": {
+                "type": "boolean",
+                "readOnly": true
+              }
+            }
+          }
+        ]
+      },
+      "Theme": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/Category"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "twitterFeedUsername": {
+                "type": "string",
+                "readOnly": true
+              },
+              "flickrUri": {
+                "format": "uri",
+                "type": "string",
+                "readOnly": true
+              },
+              "youtubeUri": {
+                "format": "uri",
+                "type": "string",
+                "readOnly": true
+              },
+              "audioUri": {
+                "format": "uri",
+                "type": "string",
+                "readOnly": true
+              },
+              "isActive": {
+                "type": "boolean",
+                "readOnly": true
+              },
+              "topPostKey": {
+                "type": "string"
+              },
+              "featurePostKey": {
+                "type": "string"
+              },
+              "memoryCachable": {
+                "type": "boolean",
+                "readOnly": true
+              }
+            }
+          }
+        ]
       }
     }
   }
