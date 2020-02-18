@@ -8,8 +8,10 @@ node('master') {
 	 openshiftBuild bldCfg: 'news-api-client', showBuildLogs: 'true'	 
     }
 	
+	/*
 	stage('Integration Tests') {
 	 echo "Building..."
 	 openshiftBuild bldCfg: 'news-api-client-tests', showBuildLogs: 'true'	 
     }	
+	*/
 }
