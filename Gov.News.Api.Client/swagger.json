@@ -440,11 +440,6 @@
         ],
         "summary": "Get the posts associated with the keys in the list passed in.",
         "operationId": "Posts_Get",
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
         "produces": [
           "text/plain",
           "application/json",
@@ -453,21 +448,20 @@
         "parameters": [
           {
             "in": "query",
+            "name": "postKeys",
+            "description": "",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "default": ""
+          },
+          {
+            "in": "query",
             "name": "api-version",
             "description": "The requested API version",
             "type": "string",
             "default": ""
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -929,6 +923,7 @@
         "summary": "Create a NewsOnDemand subscription for the provided subscriberInfo.",
         "operationId": "Subscribe_CreateNewsOnDemandEmailSubscriptionWithPreferences",
         "consumes": [
+          "application/json-patch+json",
           "application/json",
           "text/json",
           "application/*+json"
@@ -1004,6 +999,7 @@
         "summary": "Update an existing NOD subscription",
         "operationId": "Subscribe_UpdateNewsOnDemandEmailSubscriptionWithPreferences",
         "consumes": [
+          "application/json-patch+json",
           "application/json",
           "text/json",
           "application/*+json"
@@ -1981,6 +1977,9 @@
             "hasMediaAssets": {
               "type": "boolean"
             },
+            "hasTranslations": {
+              "type": "boolean"
+            },
             "isNewsOnDemand": {
               "type": "boolean"
             },
@@ -2032,6 +2031,13 @@
               "type": "string"
             },
             "azureAssets": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Asset"
+              },
+              "readOnly": true
+            },
+            "azureTranslations": {
               "type": "array",
               "items": {
                 "$ref": "#/definitions/Asset"
