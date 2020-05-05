@@ -43,7 +43,7 @@ if [ "$DEV_MODE" == true ]; then
   exit 0
 fi
 
-OUTPUT="$(npm --version)"
+OUTPUT="$(npm uninstall -g npm)"
 echo "${OUTPUT}"
 
 # User settable environment
