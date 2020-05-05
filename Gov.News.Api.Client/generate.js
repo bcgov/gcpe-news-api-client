@@ -8,6 +8,16 @@ var dest = __dirname + path.sep + "swagger.json";
 
 console.log("using node version ", process.version);
 
+// npm version
+var exec = require('child_process').exec,
+npmVersion;
+
+exec('npm -v',
+  function (error, stdout, stderr) {
+    npmVersion = stdout;
+	console.log('npm version: ', npmVersion);
+});
+
 var cb = function() {
 	var command = "autorest --verbose --input-file=" + __dirname + "/swagger.json --output-folder=" + __dirname + "/generated  --csharp --use-datetimeoffset --generate-empty-classes --override-client-name=Client  --namespace=Gov.News.Api";
 
