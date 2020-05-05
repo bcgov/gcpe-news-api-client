@@ -1,1 +1,1 @@
-DOTNET_NPM_TOOLS=autorest npm
+DOTNET_NPM_TOOLS=autorest npm@6.12.0
