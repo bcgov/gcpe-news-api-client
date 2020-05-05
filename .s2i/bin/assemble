@@ -43,9 +43,6 @@ if [ "$DEV_MODE" == true ]; then
   exit 0
 fi
 
-OUTPUT="$(npm uninstall -g npm)"
-echo "${OUTPUT}"
-
 # User settable environment
 DOTNET_CONFIGURATION="${DOTNET_CONFIGURATION:-Release}"
 DOTNET_STARTUP_PROJECT="${DOTNET_STARTUP_PROJECT:-.}"
