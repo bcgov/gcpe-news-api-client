@@ -11,6 +11,8 @@
 
 set -e
 
+sudo npm uninstall -g npm
+
 # npm
 if [ -n "${DOTNET_NPM_TOOLS}" ]; then
   echo "---> Installing npm tools ..."
