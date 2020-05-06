@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "autorest": "^2.0.4215"
+    "autorest": "2.0.4413"
   }
 }

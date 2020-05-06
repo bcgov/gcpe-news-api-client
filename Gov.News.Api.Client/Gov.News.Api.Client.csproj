@@ -1,8 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Gcpe.News.Api.Client</RootNamespace>
+    <RuntimeFrameworkVersion>3.1.1</RuntimeFrameworkVersion>
     <Version>1.0.85</Version>
     <Authors>GeorgeWalker,CraigShutko,Bruno Calvignac</Authors>
     <Company>Province of BC</Company>
@@ -14,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.17" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.21" />
   </ItemGroup>
 
   <ItemGroup>

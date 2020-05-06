@@ -1,4 +1,5 @@
 ﻿using System;
+using Gov.News.Api;
 
 namespace Gov.News.Api.ClientTests
 {
