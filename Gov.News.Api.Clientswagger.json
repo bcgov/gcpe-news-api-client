@@ -1359,6 +1359,9 @@
             "kind": {
               "type": "string"
             },
+            "name": {
+              "type": "string"
+            },
             "topPostKey": {
               "type": "string"
             },
