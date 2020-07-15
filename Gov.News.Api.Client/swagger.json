@@ -10,6 +10,44 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/FacebookPosts/ByUri": {
+      "get": {
+        "tags": [
+          "FacebookPosts"
+        ],
+        "summary": "Get a Facebook post based on a Uri",
+        "operationId": "FacebookPosts_GetByUri",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "uri",
+            "description": "",
+            "type": "string",
+            "default": ""
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/FacebookPost"
+            }
+          }
+        }
+      }
+    },
     "/api/Home": {
       "get": {
         "tags": [
@@ -1252,6 +1290,21 @@
     }
   },
   "definitions": {
+    "UriHostNameType": {
+      "format": "int32",
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "type": "integer",
+      "x-ms-enum": {
+        "name": "UriHostNameType",
+        "modelAsString": true
+      }
+    },
     "DayOfWeek": {
       "format": "int32",
       "enum": [
@@ -1342,10 +1395,81 @@
         },
         "timestamp": {
           "format": "date-time",
-          "type": "string",
-          "readOnly": true
+          "type": "string"
         }
       }
+    },
+    "FacebookPost": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/DataModel"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "poster": {
+              "type": "string",
+              "readOnly": true
+            },
+            "posterLogo": {
+              "format": "uri",
+              "type": "string",
+              "readOnly": true
+            },
+            "posterSubtitle": {
+              "type": "string",
+              "readOnly": true
+            },
+            "posterLikes": {
+              "format": "int32",
+              "type": "integer",
+              "readOnly": true
+            },
+            "posterUrl": {
+              "type": "string",
+              "readOnly": true
+            },
+            "content": {
+              "type": "string",
+              "readOnly": true
+            },
+            "postLikes": {
+              "format": "int32",
+              "type": "integer",
+              "readOnly": true
+            },
+            "postComments": {
+              "format": "int32",
+              "type": "integer",
+              "readOnly": true
+            },
+            "postShares": {
+              "format": "int32",
+              "type": "integer",
+              "readOnly": true
+            },
+            "facebookObjectId": {
+              "format": "int32",
+              "type": "integer",
+              "readOnly": true
+            },
+            "type": {
+              "type": "string",
+              "readOnly": true
+            },
+            "pictureUri": {
+              "format": "uri",
+              "type": "string",
+              "readOnly": true
+            },
+            "memoryCachable": {
+              "type": "boolean",
+              "readOnly": true
+            }
+          }
+        }
+      ]
     },
     "DataIndex": {
       "type": "object",
@@ -1407,21 +1531,6 @@
           }
         }
       ]
-    },
-    "UriHostNameType": {
-      "format": "int32",
-      "enum": [
-        0,
-        1,
-        2,
-        3,
-        4
-      ],
-      "type": "integer",
-      "x-ms-enum": {
-        "name": "UriHostNameType",
-        "modelAsString": true
-      }
     },
     "ResourceLink": {
       "type": "object",
@@ -1918,6 +2027,10 @@
               "items": {
                 "type": "string"
               }
+            },
+            "facebookPictureUri": {
+              "format": "uri",
+              "type": "string"
             },
             "azureAssets": {
               "type": "array",
