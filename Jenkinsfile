@@ -1,17 +1,15 @@
 node('master') {
-    
-	// Code Quality Check is not possible for a C# project, as it must be run from a MS Windows server or PC.
-	// See the project readme for instructions.
-	    
+
 	stage('Build') {
-	 echo "Building..."
-	 openshiftBuild bldCfg: 'news-api-client', showBuildLogs: 'true'	 
+        openshift.withCluster() {
+                openshift.withProject() {
+                    echo "Building..."
+                    def bc = openshift.selector('bc', 'news-api-client')
+                    def buildSelector = bc.startBuild()
+                    sleep(5)
+					buildSelector.logs('-f')
+            }
+        }
     }
-	
-	/*
-	stage('Integration Tests') {
-	 echo "Building..."
-	 openshiftBuild bldCfg: 'news-api-client-tests', showBuildLogs: 'true'	 
-    }	
-	*/
+
 }
