@@ -7,7 +7,7 @@ node('master') {
                     def bc = openshift.selector('bc', 'news-api-client')
                     def buildSelector = bc.startBuild()
                     sleep(5)
-					buildSelector.logs('-f')
+		    buildSelector.logs('-f')
             }
         }
     }
