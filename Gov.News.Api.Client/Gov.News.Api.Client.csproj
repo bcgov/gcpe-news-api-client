@@ -17,10 +17,6 @@
     <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.21" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="generated\" />
-  </ItemGroup>
-
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="npm install &amp;&amp; npm run generate" />
   </Target>
