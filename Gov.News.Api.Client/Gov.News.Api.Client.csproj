@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Gcpe.News.Api.Client</RootNamespace>
+    <RuntimeFrameworkVersion>3.1.1</RuntimeFrameworkVersion>
     <Version>1.0.86</Version>
     <Authors>GeorgeWalker,CraigShutko,Bruno Calvignac</Authors>
     <Company>Province of BC</Company>
@@ -15,16 +16,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.21" />
-  </ItemGroup>
-
-  <PropertyGroup>
-    <IncludeGeneratorSharedCode>true</IncludeGeneratorSharedCode>
-    <RestoreAdditionalProjectSources>https://azuresdkartifacts.blob.core.windows.net/azure-sdk-tools/index.json</RestoreAdditionalProjectSources>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Azure.Core" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.AutoRest.CSharp" Version="3.0.0-beta.20210311.1" PrivateAssets="All" />
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
