@@ -19,7 +19,7 @@ exec('npm -v',
 });
 
 var cb = function() {
-	var command = "autorest --legacy --verbose --input-file=" + __dirname + "/swagger.json --output-folder=" + __dirname + "/generated  --csharp --use-datetimeoffset --generate-empty-classes --override-client-name=Client  --namespace=Gov.News.Api";
+	var command = "autorest --use:@autorest/csharp@3.0.0-beta.20210210.4 --legacy --verbose --input-file=" + __dirname + "/swagger.json --output-folder=" + __dirname + "/generated  --csharp --use-datetimeoffset --generate-empty-classes --override-client-name=Client  --namespace=Gov.News.Api";
 
 	child = exec(command, function(err, stdout, stderr) {
 		console.log('stderr' + stderr);
