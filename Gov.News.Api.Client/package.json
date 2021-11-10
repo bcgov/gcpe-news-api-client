@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "autorest": "3.4.2"
+    "autorest": "2.0.4413"
   }
 }
