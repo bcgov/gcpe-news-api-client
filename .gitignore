@@ -277,5 +277,3 @@ __pycache__/
 # SonarQube
 *.sonarqube
 
-generated
-

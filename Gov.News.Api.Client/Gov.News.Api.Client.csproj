@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Gcpe.News.Api.Client</RootNamespace>
-	  <Version>1.0.210</Version>
+	  <Version>1.0.218</Version>
     <Authors>GeorgeWalker,CraigShutko,Bruno Calvignac</Authors>
     <Company>Province of BC</Company>
     <Description>API for news.gov.bc.ca</Description>
@@ -16,9 +16,5 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.21" />
   </ItemGroup>
-
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="npm install &amp;&amp; npm run generate" />
-  </Target>
 
 </Project>
