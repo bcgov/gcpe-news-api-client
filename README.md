@@ -59,6 +59,21 @@ If you wish to remove a package from nuget.org or another nuget repository, issu
 
 (key is your Nuget.org key)
 
+## Regenerating the API client
+
+The generated API client source is committed to the repository.
+
+When the News API Swagger definition changes, regenerate the client locally:
+
+npm install
+npm run generate
+
+Review and commit changes under `Gov.News.Api.Client/generated`.
+
+Client generation currently requires the legacy AutoRest toolchain and a compatible Node.js version.
+
+Normal builds do not regenerate the client.
+
 
 Contribution
 ------------
