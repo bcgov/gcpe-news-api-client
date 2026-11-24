@@ -24,10 +24,11 @@ namespace Gov.News.Api.Models
         /// <summary>
         /// Initializes a new instance of the Ministry class.
         /// </summary>
-        public Ministry(string key = default(string), bool? memoryCachable = default(bool?), System.DateTimeOffset? timestamp = default(System.DateTimeOffset?), string kind = default(string), string name = default(string), string topPostKey = default(string), string featurePostKey = default(string), string twitterFeedUsername = default(string), string flickrUri = default(string), string youtubeUri = default(string), string audioUri = default(string), bool? isActive = default(bool?), string childMinistryKey = default(string), string parentMinistryKey = default(string), string ministryUrl = default(string), string displayAdditionalName = default(string), IList<ResourceLink> topicLinks = default(IList<ResourceLink>), IList<ResourceLink> serviceLinks = default(IList<ResourceLink>), IList<ResourceLink> newsletterLinks = default(IList<ResourceLink>), string ministerName = default(string), MinistryContactUser contactUser = default(MinistryContactUser), MinistrySecondContactUser secondContactUser = default(MinistrySecondContactUser), string weekendContactNumber = default(string))
+        public Ministry(string key = default(string), bool? memoryCachable = default(bool?), System.DateTimeOffset? timestamp = default(System.DateTimeOffset?), string kind = default(string), string name = default(string), string topPostKey = default(string), string featurePostKey = default(string), string twitterFeedUsername = default(string), string flickrUri = default(string), string youtubeUri = default(string), string audioUri = default(string), bool? isActive = default(bool?), string childMinistryKey = default(string), IList<string> childMinistryKeys = default(IList<string>), string parentMinistryKey = default(string), string ministryUrl = default(string), string displayAdditionalName = default(string), IList<ResourceLink> topicLinks = default(IList<ResourceLink>), IList<ResourceLink> serviceLinks = default(IList<ResourceLink>), IList<ResourceLink> newsletterLinks = default(IList<ResourceLink>), string ministerName = default(string), MinistryContactUser contactUser = default(MinistryContactUser), MinistrySecondContactUser secondContactUser = default(MinistrySecondContactUser), string weekendContactNumber = default(string))
             : base(key, memoryCachable, timestamp, kind, name, topPostKey, featurePostKey, twitterFeedUsername, flickrUri, youtubeUri, audioUri, isActive)
         {
             ChildMinistryKey = childMinistryKey;
+            ChildMinistryKeys = childMinistryKeys;
             ParentMinistryKey = parentMinistryKey;
             MinistryUrl = ministryUrl;
             DisplayAdditionalName = displayAdditionalName;
@@ -50,6 +51,11 @@ namespace Gov.News.Api.Models
         /// </summary>
         [JsonProperty(PropertyName = "childMinistryKey")]
         public string ChildMinistryKey { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "childMinistryKeys")]
+        public IList<string> ChildMinistryKeys { get; set; }
 
         /// <summary>
         /// </summary>

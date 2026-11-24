@@ -1518,6 +1518,12 @@
             "childMinistryKey": {
               "type": "string"
             },
+            "childMinistryKeys": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
             "parentMinistryKey": {
               "type": "string"
             },
